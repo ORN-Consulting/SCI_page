@@ -1,47 +1,140 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { supabase } from '../lib/supabase';
 
 const Inquiry = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // 수파베이스 'inquiries' 테이블에 저장 로직 (필요 시)
+    const { error } = await supabase.from('inquiries').insert([formData]);
+    
+    if (!error) {
+      alert('문의가 성공적으로 접수되었습니다.');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } else {
+      alert('오류가 발생했습니다. 다시 시도해주세요.');
+    }
+    setIsSubmitting(false);
+  };
+
   return (
     <div className="bg-white min-h-screen">
-      <section className="bg-[#1a4a9c] py-16 px-6 text-white text-center">
-        <h1 className="text-3xl font-bold mb-4">문의하기</h1>
-        <p className="opacity-80">궁금하신 사항을 남겨주시면 전문가가 직접 답변해 드립니다.</p>
+      {/* === 1. 상단 히어로 섹션 (파란색 단색) === */}
+      <section className="relative h-[400px] flex items-center justify-center bg-[#1a4a9c]">
+        {/* 장식용 패턴 (선택 사항: 너무 밋밋할 경우를 대비해 살짝 투명한 텍스트 배치) */}
+        <div className="absolute inset-0 opacity-10 flex items-center justify-center overflow-hidden pointer-events-none">
+          <span className="text-[20rem] font-black text-white select-none tracking-tighter">INQUIRY</span>
+        </div>
+
+        <div className="relative text-center px-6">
+          <h1 className="text-4xl md:text-5xl font-black text-white tracking-[0.2em] mb-4 uppercase">
+            문의하기
+          </h1>
+          <p className="text-white/70 font-light tracking-widest uppercase text-sm">
+            Contact Us for Consultation
+          </p>
+        </div>
       </section>
 
-      <section className="py-16 px-6 max-w-3xl mx-auto">
-        <div className="bg-white rounded-3xl border border-gray-100 shadow-xl p-8 md:p-12">
-          <form className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-bold text-gray-700 mb-2">성함 / 단체명</label>
-                <input type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1a4a9c] transition-all" placeholder="성함을 입력하세요" />
-              </div>
-              <div>
-                <label className="block text-sm font-bold text-gray-700 mb-2">이메일 주소</label>
-                <input type="email" className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1a4a9c] transition-all" placeholder="example@mail.com" />
-              </div>
-            </div>
+      {/* === 2. 문의 폼 섹션 === */}
+      <section className="py-24 px-6 max-w-4xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-black text-gray-950 mb-4 tracking-tighter italic">Get in Touch</h2>
+          <p className="text-gray-500 font-light">궁금하신 점을 남겨주시면 전문가가 직접 답변해 드립니다.</p>
+          <div className="w-12 h-1 bg-[#1a4a9c] mx-auto mt-6"></div>
+        </div>
 
-            <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2">문의 분야</label>
-              <select className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1a4a9c] transition-all">
-                <option>선택해 주세요</option>
-                <option>AI 기술 자문</option>
-                <option>구조 안전 진단</option>
-                <option>조합 가입 문의</option>
-                <option>기타</option>
-              </select>
+        <form onSubmit={handleSubmit} className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* 성함 */}
+            <div className="flex flex-col gap-2">
+              <label className="text-[11px] font-black uppercase tracking-widest text-gray-400">Name</label>
+              <input 
+                type="text"
+                required
+                className="w-full border-b-2 border-gray-100 p-4 focus:border-[#1a4a9c] outline-none transition-all font-medium rounded-none bg-gray-50/30"
+                placeholder="성함을 입력하세요"
+                value={formData.name}
+                onChange={(e) => setFormData({...formData, name: e.target.value})}
+              />
             </div>
-
-            <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2">문의 내용</label>
-              <textarea rows="6" className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1a4a9c] transition-all" placeholder="자세한 문의 내용을 입력해 주세요"></textarea>
+            {/* 이메일 */}
+            <div className="flex flex-col gap-2">
+              <label className="text-[11px] font-black uppercase tracking-widest text-gray-400">Email Address</label>
+              <input 
+                type="email"
+                required
+                className="w-full border-b-2 border-gray-100 p-4 focus:border-[#1a4a9c] outline-none transition-all font-medium rounded-none bg-gray-50/30"
+                placeholder="example@email.com"
+                value={formData.email}
+                onChange={(e) => setFormData({...formData, email: e.target.value})}
+              />
             </div>
+          </div>
 
-            <button type="submit" className="w-full py-4 bg-[#1a4a9c] text-white font-bold rounded-xl shadow-lg hover:bg-blue-800 transition-all transform hover:-translate-y-1">
-              문의 접수하기
+          {/* 제목 */}
+          <div className="flex flex-col gap-2">
+            <label className="text-[11px] font-black uppercase tracking-widest text-gray-400">Subject</label>
+            <input 
+              type="text"
+              required
+              className="w-full border-b-2 border-gray-100 p-4 focus:border-[#1a4a9c] outline-none transition-all font-medium rounded-none bg-gray-50/30"
+              placeholder="문의 제목을 입력하세요"
+              value={formData.subject}
+              onChange={(e) => setFormData({...formData, subject: e.target.value})}
+            />
+          </div>
+
+          {/* 내용 */}
+          <div className="flex flex-col gap-2">
+            <label className="text-[11px] font-black uppercase tracking-widest text-gray-400">Message</label>
+            <textarea 
+              rows="6"
+              required
+              className="w-full border-b-2 border-gray-100 p-4 focus:border-[#1a4a9c] outline-none transition-all font-medium rounded-none bg-gray-50/30 resize-none"
+              placeholder="상세 내용을 입력해 주세요"
+              value={formData.message}
+              onChange={(e) => setFormData({...formData, message: e.target.value})}
+            ></textarea>
+          </div>
+
+          {/* 전송 버튼 */}
+          <div className="pt-6">
+            <button 
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full py-5 bg-gray-950 text-white font-black tracking-[0.3em] uppercase hover:bg-[#1a4a9c] transition-all rounded-none disabled:bg-gray-400"
+            >
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
-          </form>
+          </div>
+        </form>
+      </section>
+
+      {/* 3. 간단한 위치/연락처 정보 (선택 사항) */}
+      <section className="py-20 bg-gray-50 border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+          <div>
+            <h4 className="text-[11px] font-black text-[#1a4a9c] uppercase tracking-widest mb-4">Location</h4>
+            <p className="text-gray-600 font-light">경기도 안양시 동안구 시민대로 ...</p>
+          </div>
+          <div>
+            <h4 className="text-[11px] font-black text-[#1a4a9c] uppercase tracking-widest mb-4">Contact</h4>
+            <p className="text-gray-600 font-light">T. 031-000-0000<br/>E. support@sci.or.kr</p>
+          </div>
+          <div>
+            <h4 className="text-[11px] font-black text-[#1a4a9c] uppercase tracking-widest mb-4">Working Hours</h4>
+            <p className="text-gray-600 font-light">평일 09:00 - 18:00<br/>주말 및 공휴일 휴무</p>
+          </div>
         </div>
       </section>
     </div>
