@@ -10,6 +10,7 @@ import Members from './pages/Members';
 import Gallery from './pages/Gallery';
 import Notice from './pages/Notice';
 import Inquiry from './pages/Inquiry';
+import NoticeDetail from './pages/NoticeDetail'; // 1. 파일 불러오기
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="notice" element={<Notice />} />
           <Route path="inquiry" element={<Inquiry />} />
+          <Route path="notice/:id" element={<NoticeDetail />} />
           <Route path="signup" element={<Signup />} />
         </Route>
       </Routes>

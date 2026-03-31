@@ -1,85 +1,165 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { supabase } from '../lib/supabase';
 
 const Main = () => {
-  // News & Update 데이터 예시 (도안의 날짜, 사진 요소 반영)
-  const newsItems = [
+  const navigate = useNavigate();
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [notices, setNotices] = useState([]);
+
+  useEffect(() => {
+    const fetchLatestNotices = async () => {
+      const { data, error } = await supabase
+        .from('notices')
+        .select('*')
+        .order('date', { ascending: false })
+        .limit(4); // 상단 배치를 고려해 깔끔하게 4개로 조정
+      if (!error) setNotices(data);
+    };
+    fetchLatestNotices();
+  }, []);
+
+  const slides = [
     {
-      id: 1,
-      title: "2024년 과학기술인 협력 네트워크 발대식",
-      date: "2024.03.20", // 
-      image: "https://images.unsplash.com/photo-1591115765373-520b7a217217?auto=format&fit=crop&q=80&w=400", // 
-      summary: "국내 최고의 과학기술 전문가들이 모여 새로운 비즈니스 모델을 논의했습니다."
+      title: "과학기술인협동조합",
+      desc: "기술창업, 기술사업화, 투자유치 등 국내 최고의 전문가들이 참여한 조합입니다.",
+      img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070"
     },
     {
-      id: 2,
-      title: "신규 AI 모듈 개발 프로젝트 착수",
-      date: "2024.03.15", // 
-      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=400", // 
-      summary: "CCTV 이상행동 감지 AI 모듈 고도화를 위한 연구가 시작되었습니다."
+      title: "창의적인 미래 선도",
+      desc: "전문가들의 결집된 기술력으로 새로운 가치를 창출합니다.",
+      img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070"
     }
   ];
 
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+
   return (
     <div className="bg-white min-h-screen">
-      {/* 1. 상단 지난 소개 섹션  */}
-      <section className="bg-[#1a4a9c] text-white py-16 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-sm font-semibold tracking-widest uppercase mb-4 opacity-80">
-            Introduction
-          </h2>
-          <h1 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
-            과학기술의 가치를 연결하는 <br />
-            ㄱㅅㄷ 과학기술인협동조합의 지난 발자취
-          </h1>
-          <p className="text-lg opacity-90 max-w-2xl leading-relaxed">
-            우리는 지난 시간 동안 지역 사회와 공공 기관을 잇는 
-            수많은 기술 공헌 프로젝트를 수행해 왔습니다. 
-          </p>
-        </div>
-      </section>
-
-      {/* 2. News & Update 섹션  */}
-      <section className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex justify-between items-end mb-10">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900">News & Update</h2> 
-              <div className="w-12 h-1 bg-[#1a4a9c] mt-4"></div>
-            </div>
-            {/* 페이지 이동 버튼  */}
-            <button className="text-[#1a4a9c] font-semibold hover:underline">
-              전체보기 +
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {newsItems.map((item) => (
-              <div key={item.id} className="group cursor-pointer">
-                {/* 사진 영역  */}
-                <div className="overflow-hidden rounded-2xl mb-6 aspect-video">
-                  <img 
-                    src={item.image} 
-                    alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                </div>
-                {/* 날짜 영역  */}
-                <span className="text-sm text-gray-500 font-medium">{item.date}</span> 
-                <h3 className="text-xl font-bold mt-2 mb-3 group-hover:text-[#1a4a9c] transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  {item.summary}
+      {/* 1. 히어로 슬라이더 (기존 유지) */}
+      <section className="relative h-screen min-h-[700px] overflow-hidden">
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
+          >
+            <img src={slide.img} alt="hero" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-black/50 flex items-center justify-center text-center">
+              <div className="max-w-4xl px-6">
+                <h1 className="text-4xl md:text-6xl font-black text-white mb-6 animate-fadeInUp uppercase tracking-tighter">
+                  {slide.title}
+                </h1>
+                <p className="text-lg md:text-xl text-white/80 mb-10 leading-relaxed font-light">
+                  {slide.desc}
                 </p>
-                {/* 페이지로 이동  */}
-                <div className="inline-flex items-center text-sm font-bold text-[#1a4a9c]">
-                  자세히 보기
-                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
+                <div className="flex justify-center gap-4">
+                  <div className={`w-2 h-2 rounded-full ${currentSlide === 0 ? 'bg-white' : 'bg-white/30'}`}></div>
+                  <div className={`w-2 h-2 rounded-full ${currentSlide === 1 ? 'bg-white' : 'bg-white/30'}`}></div>
                 </div>
               </div>
-            ))}
+            </div>
+          </div>
+        ))}
+        <button onClick={prevSlide} className="absolute left-10 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors z-20">
+          <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M15 19l-7-7 7-7" /></svg>
+        </button>
+        <button onClick={nextSlide} className="absolute right-10 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors z-20">
+          <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M9 5l7 7-7 7" /></svg>
+        </button>
+      </section>
+
+     
+
+      {/* 3. 조합의 지난 활동 (기존 동일) */}
+      <section className="py-32 px-6 bg-white">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-20">
+          <div className="md:w-1/3">
+            <h2 className="text-3xl font-black text-gray-950 tracking-tighter italic">조합의 지난 활동</h2>
+          </div>
+          <div className="md:w-2/3">
+            <p className="text-gray-500 leading-relaxed mb-10 font-light text-lg">
+              ㄱㅅㄷ 과학기술인협동조합은 설립 이후 다양한 기술 컨설팅과 R&D 지원 사업을 통해 
+              혁신적인 성과를 거두어 왔습니다. 우리는 단순한 기술 제공을 넘어 파트너사와 함께 성장하는 가치를 지향합니다.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 text-left">
+              <div>
+                <h4 className="font-bold text-[#1a4a9c] mb-2 uppercase text-xs tracking-widest">인적연결사업</h4>
+                <p className="text-sm text-gray-500 leading-relaxed">분야별 최고의 전문가 네트워크를 통해 최적의 매칭 서비스를 제공합니다.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-[#1a4a9c] mb-2 uppercase text-xs tracking-widest">기술자문사업</h4>
+                <p className="text-sm text-gray-500 leading-relaxed">복잡한 기술적 난제를 해결하기 위한 전문적인 솔루션을 제안합니다.</p>
+              </div>
+            </div>
+            <Link to="/about" className="inline-block px-8 py-3 bg-gray-900 text-white font-bold text-sm hover:bg-[#1a4a9c] transition-all rounded-none">
+              VIEW MORE
+            </Link>
+          </div>
+        </div>
+      </section>
+ {/* 2. News & Update (가운데 정렬 및 상단 배치) */}
+      <section className="py-24 px-6 bg-gray-50 border-b border-gray-100">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="mb-12">
+            <h2 className="text-3xl md:text-4xl font-black text-gray-950 mb-3 tracking-tight">News & Update</h2>
+            <div className="w-8 h-1 bg-[#1a4a9c] mx-auto mb-4"></div>
+            <p className="text-gray-500 font-light">조합의 최신 소식을 가장 먼저 확인하세요.</p>
+          </div>
+
+          <div className="bg-white shadow-sm border border-gray-100">
+            {notices.length > 0 ? (
+              notices.map((item) => (
+                <div 
+                  key={item.id}
+                  onClick={() => navigate(`/notice/${item.id}`)}
+                  className="group p-6 md:p-8 border-b border-gray-50 hover:bg-gray-50 transition-all cursor-pointer text-center"
+                >
+                  <div className="flex flex-col items-center justify-center">
+                    <div className="flex items-center gap-3 mb-3">
+                      {item.important && (
+                        <span className="bg-[#1a4a9c] text-white text-[10px] font-black px-2 py-0.5 uppercase tracking-tighter">Important</span>
+                      )}
+                      <span className="text-gray-400 text-xs font-medium tracking-widest">{item.date}</span>
+                    </div>
+                    <h3 className="text-lg md:text-xl font-bold text-gray-900 group-hover:text-[#1a4a9c] transition-colors">
+                      {item.title}
+                    </h3>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="py-16 text-center text-gray-400 font-light italic">등록된 소식이 없습니다.</div>
+            )}
+            <Link 
+              to="/notice" 
+              className="block w-full py-5 text-sm font-black text-gray-400 hover:text-[#1a4a9c] hover:bg-gray-50 transition-all uppercase tracking-[0.2em]"
+            >
+              View All Notices
+            </Link>
+          </div>
+        </div>
+      </section>
+      {/* 4. 조합활동 (직사각형 이미지) */}
+      <section className="py-32 px-6 bg-gray-50">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-20">
+          <div className="md:w-1/2">
+            <img 
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070" 
+              alt="activity" 
+              className="rounded-none shadow-2xl w-full object-cover h-[500px]"
+            />
+          </div>
+          <div className="md:w-1/2">
+            <h2 className="text-4xl font-black text-gray-950 mb-8 tracking-tighter">조합활동</h2>
+            <p className="text-gray-500 leading-relaxed text-lg font-light mb-10">
+              우리는 단순한 영리 목적을 넘어, 과학기술인들의 권익을 보호하고 
+              지역 사회의 기술적 난제를 해결하는 데 앞장서고 있습니다. 
+              정기적인 세미나와 기술 교류회를 통해 지식을 공유하고 협력합니다.
+            </p>
+            <Link to="/gallery" className="inline-block px-10 py-4 bg-gray-900 text-white font-bold hover:bg-[#1a4a9c] transition-all rounded-none">
+              VIEW MORE
+            </Link>
           </div>
         </div>
       </section>
