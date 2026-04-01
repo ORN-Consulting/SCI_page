@@ -14,110 +14,172 @@ const Gallery = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [hash]);
 
-  // 1. 사업 분야 데이터 (이전 도안 기준)
-  const businessData = [
-    { id: 1, title: "이자현 | 이사장", career: ["가천대학교 박사(수료)", "비즈니스지원단 위원"], specialty: ["재무분석", "ESG 컨설팅"], image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000" },
-    { id: 2, title: "백종일 | 단장", career: ["인하대학교 석사", "기업진단 전문위원"], specialty: ["자금조달", "사업전환"], image: "https://images.unsplash.com/photo-1454165833767-027ffea9e778?q=80&w=1000" }
+  const businessTopCards = [
+    { id: 1, title: '이자현 | 이사장', desc: '동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한 사람 대한으로 길이 보전하세.', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800' },
+    { id: 2, title: '이자현 | 이사장', desc: '동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한 사람 대한으로 길이 보전하세.', image: 'https://images.unsplash.com/photo-1454165833767-027ffea9e778?q=80&w=800' },
+    { id: 3, title: '이자현 | 이사장', desc: '동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한 사람 대한으로 길이 보전하세.', image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=800' },
   ];
 
-  // 2. 컨설팅 & 강의 분야 데이터 (새 도안 image_128c78 기준)
-  const lectureData = {
-    topCards: [
-      { id: 1, title: "커리큘럼 개발", desc: "현장 실무 중심의 기술 교육 커리큘럼을 설계하고 전문가 매칭을 지원합니다.", image: "https://images.unsplash.com/photo-1524178232363-1fb280714553?q=80&w=800" },
-      { id: 2, title: "기술 가치 평가", desc: "특허 및 원천 기술에 대한 경제적 가치를 분석하여 사업화 전략을 제안합니다.", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800" },
-      { id: 3, title: "기업 역량 강화", desc: "중소기업 및 스타트업의 조직 혁신과 비즈니스 고도화 강의를 수행합니다.", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800" }
-    ],
-    historyItems: [
-      { id: 1, title: "기술 창업 교육 과정 운영", desc: "예비 창업자들을 대상으로 한 기술 기반 창업 실무 강의를 20회 이상 수행하였습니다.", image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800" },
-      { id: 2, title: "지자체 기술 자문 컨설팅", desc: "지역 특화 산업 발전을 위한 정책 자문 및 기술 도입 컨설팅 프로젝트를 완료했습니다.", image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800" },
-      { id: 3, title: "R&D 기획 및 전략 수립", desc: "정부 지원 사업 매칭 및 연구 개발 로드맵 수립을 통해 기업의 성장을 도왔습니다.", image: "https://images.unsplash.com/photo-1454165833767-027ffea9e778?q=80&w=800" },
-      { id: 4, title: "글로벌 시장 진출 강의", desc: "국내 기술의 해외 시장 판로 개척과 글로벌 네트워킹 전략 강의를 성료했습니다.", image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=800" },
-      { id: 5, title: "대학 연계 기술 이전 세미나", desc: "대학 보유 미활용 기술의 민간 이전 촉진을 위한 기술 설명회 및 매칭을 주도했습니다.", image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800" },
-      { id: 6, title: "산업 트렌드 분석 리포트", desc: "4차 산업 혁명 주요 기술 트렌드 분석 및 기업 맞춤형 대응 전략 강의를 진행했습니다.", image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800" }
-    ]
-  };
+  const businessHistoryItems = [
+    { id: 1, title: '이자현 | 이사장', desc: '동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한 사람 대한으로 길이 보전하세. 남 씩 소나무 철갑을 두른 도 바람서리 불변함은 우리 기상일세 무궁화 성천의 화려강산 대한 사람 대한으로 길이 보전하세.' },
+    { id: 2, title: '이자현 | 이사장', desc: '동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한 사람 대한으로 길이 보전하세. 남 씩 소나무 철갑을 두른 도 바람서리 불변함은 우리 기상일세 무궁화 성천의 화려강산 대한 사람 대한으로 길이 보전하세.' },
+    { id: 3, title: '이자현 | 이사장', desc: '동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한 사람 대한으로 길이 보전하세. 남 씩 소나무 철갑을 두른 도 바람서리 불변함은 우리 기상일세 무궁화 성천의 화려강산 대한 사람 대한으로 길이 보전하세.' },
+    { id: 4, title: '이자현 | 이사장', desc: '동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한 사람 대한으로 길이 보전하세. 남 씩 소나무 철갑을 두른 도 바람서리 불변함은 우리 기상일세 무궁화 성천의 화려강산 대한 사람 대한으로 길이 보전하세.' },
+    { id: 5, title: '이자현 | 이사장', desc: '동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한 사람 대한으로 길이 보전하세. 남 씩 소나무 철갑을 두른 도 바람서리 불변함은 우리 기상일세 무궁화 성천의 화려강산 대한 사람 대한으로 길이 보전하세.' },
+    { id: 6, title: '이자현 | 이사장', desc: '동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한 사람 대한으로 길이 보전하세. 남 씩 소나무 철갑을 두른 도 바람서리 불변함은 우리 기상일세 무궁화 성천의 화려강산 대한 사람 대한으로 길이 보전하세.' },
+  ];
+
+  const lectureItems = [
+    {
+      id: 1,
+      category: '컨설팅 & 강의 분야',
+      title: '창업 성공의 핵심 요인,\n철저한 사업 타당성 분석에서 시작.',
+      desc1: '기술을 통한 창업은 기술 아이템에 대한 철저한 시장분석을 통하여 기술의 경제적 가치 창출 유무를 검증하고 사장진입 전략과 함께 수립되어야 보다 성공적인 기술창업이 이루어 질수 있습니다.',
+      desc2: '이러한 일련의 과정은 비즈니스 모델 수립 과정을 통한 철저한 사업 타당성 검증이 필요합니다. 그리고 비즈니스 모델을 통한 기술 창업 가치를 담아낼 수 있는 기술 사업화 사업계획서의 작성이 무엇보다 중요합니다. 재율경영컨설팅은 기술창업분야의 오랜 전문 인력을 통하여 업종별 기술창업과 사업화를 지원해 드립니다.',
+    },
+    {
+      id: 2,
+      category: '컨설팅 & 강의 분야',
+      title: '창업 성공의 핵심 요인,\n철저한 사업 타당성 분석에서 시작.',
+      desc1: '기술을 통한 창업은 기술 아이템에 대한 철저한 시장분석을 통하여 기술의 경제적 가치 창출 유무를 검증하고 사장진입 전략과 함께 수립되어야 보다 성공적인 기술창업이 이루어 질수 있습니다.',
+      desc2: '이러한 일련의 과정은 비즈니스 모델 수립 과정을 통한 철저한 사업 타당성 검증이 필요합니다. 그리고 비즈니스 모델을 통한 기술 창업 가치를 담아낼 수 있는 기술 사업화 사업계획서의 작성이 무엇보다 중요합니다. 재율경영컨설팅은 기술창업분야의 오랜 전문 인력을 통하여 업종별 기술창업과 사업화를 지원해 드립니다.',
+    },
+    {
+      id: 3,
+      category: '컨설팅 & 강의 분야',
+      title: '창업 성공의 핵심 요인,\n철저한 사업 타당성 분석에서 시작.',
+      desc1: '기술을 통한 창업은 기술 아이템에 대한 철저한 시장분석을 통하여 기술의 경제적 가치 창출 유무를 검증하고 사장진입 전략과 함께 수립되어야 보다 성공적인 기술창업이 이루어 질수 있습니다.',
+      desc2: '이러한 일련의 과정은 비즈니스 모델 수립 과정을 통한 철저한 사업 타당성 검증이 필요합니다. 그리고 비즈니스 모델을 통한 기술 창업 가치를 담아낼 수 있는 기술 사업화 사업계획서의 작성이 무엇보다 중요합니다. 재율경영컨설팅은 기술창업분야의 오랜 전문 인력을 통하여 업종별 기술창업과 사업화를 지원해 드립니다.',
+    },
+    {
+      id: 4,
+      category: '컨설팅 & 강의 분야',
+      title: '창업 성공의 핵심 요인,\n철저한 사업 타당성 분석에서 시작.',
+      desc1: '기술을 통한 창업은 기술 아이템에 대한 철저한 시장분석을 통하여 기술의 경제적 가치 창출 유무를 검증하고 사장진입 전략과 함께 수립되어야 보다 성공적인 기술창업이 이루어 질수 있습니다.',
+      desc2: '이러한 일련의 과정은 비즈니스 모델 수립 과정을 통한 철저한 사업 타당성 검증이 필요합니다. 그리고 비즈니스 모델을 통한 기술 창업 가치를 담아낼 수 있는 기술 사업화 사업계획서의 작성이 무엇보다 중요합니다. 재율경영컨설팅은 기술창업분야의 오랜 전문 인력을 통하여 업종별 기술창업과 사업화를 지원해 드립니다.',
+    },
+  ];
 
   return (
     <div className="bg-white min-h-screen">
-      {/* 히어로 섹션 */}
-      <section className="relative h-[400px] overflow-hidden flex items-center justify-center">
-        <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/60"></div>
-        <h1 className="relative text-4xl font-black text-white tracking-[0.2em] uppercase">과학기술인협동조합</h1>
+
+      {/* 히어로 섹션 — Members와 동일 */}
+      <section className="relative h-[45vh] min-h-80 overflow-hidden flex items-center justify-center">
+        <img
+          src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=2070"
+          alt="Gallery Hero"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/50"></div>
+        <h1 className="relative text-3xl md:text-4xl font-black text-white tracking-[0.15em]">과학기술인협동조합</h1>
       </section>
 
-      {/* 블랙 서브 메뉴바 */}
-      <nav className="sticky top-24 z-40 bg-black text-white">
-        <div className="max-w-7xl mx-auto flex h-16">
-          <button onClick={() => setActiveTab('business')} className={`flex-1 text-sm font-black tracking-widest ${activeTab === 'business' ? 'bg-[#1a4a9c]' : 'hover:bg-white/10'}`}>사업 분야 소개</button>
-          <button onClick={() => setActiveTab('lecture')} className={`flex-1 text-sm font-black tracking-widest border-l border-white/10 ${activeTab === 'lecture' ? 'bg-[#1a4a9c]' : 'hover:bg-white/10'}`}>컨설팅 & 강의 분야</button>
+      {/* 탭 네비게이션 */}
+      <nav className="bg-black text-white sticky top-16 md:top-18 z-40">
+        <div className="max-w-360 mx-auto flex h-14">
+          <button
+            onClick={() => setActiveTab('business')}
+            className={`flex-1 text-sm font-bold tracking-widest transition-colors ${
+              activeTab === 'business' ? 'bg-white text-black' : 'hover:bg-white/10 text-white'
+            }`}
+          >
+            사업 분야 소개
+          </button>
+          <button
+            onClick={() => setActiveTab('lecture')}
+            className={`flex-1 text-sm font-bold tracking-widest border-l border-white/20 transition-colors ${
+              activeTab === 'lecture' ? 'bg-white text-black' : 'hover:bg-white/10 text-white'
+            }`}
+          >
+            컨설팅 & 강의 분야 소개
+          </button>
         </div>
       </nav>
 
-      {/* 콘텐츠 영역 */}
-      <section className="py-24 px-6 max-w-7xl mx-auto">
-        
-        {/* === 탭 1: 사업 분야 소개 (이전과 동일) === */}
-        {activeTab === 'business' && (
-          <div className="animate-fadeIn space-y-32">
-            <div className="text-center mb-24">
-              <h2 className="text-4xl font-black text-gray-900 mb-4 tracking-tight">사업 분야 소개</h2>
-              <p className="text-gray-500 font-light italic">핵심 사업 영역을 소개합니다.</p>
-            </div>
-            {businessData.map((item) => (
-              <div key={item.id} className="flex flex-col md:flex-row gap-16 items-start">
-                <div className="md:w-5/12 w-full aspect-square bg-gray-100"><img src={item.image} className="w-full h-full object-cover" /></div>
-                <div className="md:w-7/12 w-full">
-                  <h3 className="text-3xl font-black text-gray-950 border-b-2 border-gray-900 pb-6 mb-8">{item.title}</h3>
-                  <ul className="text-gray-500 space-y-3 font-light mb-10">{item.career.map((c, i) => <li key={i}>· {c}</li>)}</ul>
-                  <div className="bg-gray-50 p-8"><p className="text-xs font-black text-[#1a4a9c] mb-4 uppercase tracking-widest">[전문분야]</p><p className="text-gray-800 font-medium">{item.specialty.join(", ")}</p></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
+      {/* 콘텐츠 */}
+      <section className="py-20 px-6 max-w-360 mx-auto">
 
-        {/* === 탭 2: 컨설팅 & 강의 분야 (도안 image_128c78 반영) === */}
+        {/* === 탭 1: 사업 분야 소개 === */}
         {activeTab === 'lecture' && (
-          <div className="animate-fadeIn">
+          <div>
             {/* 대표 활동 소개 */}
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-black text-gray-900 mb-4 tracking-tight">대표 활동 소개</h2>
-              <p className="text-gray-500 font-light italic">어떤 일을 하는지, 간략하게 요약하는 페이지</p>
+            <div className="text-center mb-14">
+              <h2 className="text-3xl md:text-4xl font-black text-gray-950 mb-3 tracking-tight">대표 활동 소개</h2>
+              <p className="text-gray-400 text-sm font-light">어떤 일을 하는지, 간략하게 요약하는 페이지</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-32">
-              {lectureData.topCards.map((card) => (
-                <div key={card.id} className="group relative h-[400px] overflow-hidden">
-                  <img src={card.image} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-black/70 p-10 flex flex-col justify-end">
-                    <h4 className="text-white text-2xl font-black mb-4">{card.title}</h4>
-                    <p className="text-white/60 text-sm font-light leading-relaxed">{card.desc}</p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-28">
+              {businessTopCards.map((card) => (
+                <div key={card.id} className="group overflow-hidden aspect-4/3 cursor-pointer">
+                  <div className="flex flex-col h-[200%] transition-transform duration-500 ease-in-out group-hover:-translate-y-1/2">
+                    {/* 이미지 영역 */}
+                    <div className="h-1/2 shrink-0 relative overflow-hidden">
+                      <img src={card.image} alt={card.title} className="w-full h-full object-cover" />
+                    </div>
+                    {/* 콘텐츠 영역 */}
+                    <div className="h-1/2 bg-gray-950 shrink-0 flex flex-col justify-center px-7">
+                      <h4 className="text-white text-base font-black mb-3">{card.title}</h4>
+                      <p className="text-white/60 text-xs font-light leading-relaxed">{card.desc}</p>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* 조합의 지난 활동 (기사단 히스토리) */}
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-black text-gray-950 mb-4 tracking-tight uppercase">조합의 지난 활동</h2>
-              <p className="text-gray-500 font-light tracking-widest">기사단이 그동안 쌓은 히스토리</p>
+            <hr className="border-gray-200 mb-28" />
+
+            {/* 조합의 지난 활동 */}
+            <div className="text-center mb-14">
+              <h2 className="text-3xl md:text-4xl font-black text-gray-950 mb-3 tracking-tight">조합의 지난 활동</h2>
+              <p className="text-gray-400 text-sm font-light tracking-widest">기사단이 그동안 쌓은 히스토리</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-20">
-              {lectureData.historyItems.map((item) => (
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-16">
+              {businessHistoryItems.map((item) => (
                 <div key={item.id} className="flex flex-col">
-                  <div className="aspect-[4/3] bg-gray-200 overflow-hidden mb-8">
-                    <img src={item.image} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
-                  </div>
-                  <h4 className="text-xl font-black text-gray-950 mb-4">{item.title}</h4>
-                  <p className="text-gray-500 text-sm font-light leading-relaxed mb-8 line-clamp-3">{item.desc}</p>
-                  <button className="self-start px-6 py-2.5 bg-gray-950 text-white text-[11px] font-black tracking-widest uppercase hover:bg-[#1a4a9c] transition-all rounded-none">
-                    View More
+                  <div className="aspect-4/3 bg-gray-300 mb-5" />
+                  <h4 className="text-base font-black text-gray-950 mb-3">{item.title}</h4>
+                  <p className="text-gray-500 text-[13px] font-light leading-relaxed mb-6">{item.desc}</p>
+                  <button className="self-start px-6 py-2.5 text-gray-900 text-xs font-bold tracking-widest uppercase rounded-full border border-transparent hover:border-gray-900 transition-all">
+                    VIEW MORE
                   </button>
                 </div>
               ))}
             </div>
           </div>
         )}
+
+        {/* === 탭 2: 조합 활동 === */}
+        {activeTab === 'business' && (
+          <div>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-black text-gray-950 mb-3 tracking-tight">컨설팅 & 강의 분야</h2>
+              <p className="text-gray-400 text-sm font-light">어떤 일을 하는지, 간략하게 요약하는 페이지</p>
+            </div>
+
+            <div className="space-y-8">
+              {lectureItems.map((item) => (
+                <div key={item.id} className="rounded-2xl border border-gray-200 p-10 md:p-14">
+                  <div className="flex flex-col md:flex-row gap-10 md:gap-16">
+                    <div className="md:w-2/5 shrink-0">
+                      <p className="text-xs text-gray-400 font-light mb-4 tracking-widest">{item.category}</p>
+                      <hr className="border-gray-300 mb-6" />
+                      <h3 className="text-xl md:text-2xl font-black text-gray-950 leading-snug whitespace-pre-line">{item.title}</h3>
+                    </div>
+                    <div className="md:w-3/5">
+                      <p className="text-[14px] text-gray-500 font-light leading-relaxed mb-5 break-keep">{item.desc1}</p>
+                      <p className="text-[14px] text-gray-500 font-light leading-relaxed mb-10 break-keep">{item.desc2}</p>
+                      <button className="px-8 py-3 text-gray-900 text-xs font-bold tracking-widest uppercase rounded-full border border-transparent hover:border-gray-900 transition-all">
+                        VIEW MORE
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
       </section>
     </div>
   );
