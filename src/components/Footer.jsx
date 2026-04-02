@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logoF from '../assets/logo_F.png';
 
 const Footer = () => {
   return (
@@ -19,12 +20,8 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center py-10 gap-8">
 
           {/* 로고 */}
-          <Link to="/" className="flex items-center gap-3">
-            <div className="bg-white text-black px-2 py-1.5 font-black text-xl italic leading-none">ㄱㅅㄷ</div>
-            <div className="leading-tight">
-              <span className="block font-black text-base tracking-tighter">과학기술인협동조합</span>
-              <span className="text-[9px] opacity-40 uppercase tracking-[0.2em] font-light mt-0.5 block">기술사업화지원단</span>
-            </div>
+          <Link to="/">
+            <img src={logoF} alt="과학기술인협동조합" className="h-10 w-auto object-contain" />
           </Link>
 
           {/* 연락처 */}

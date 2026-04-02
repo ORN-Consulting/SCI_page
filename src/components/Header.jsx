@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
-import logo from '../assets/logo1.jpeg';
+import logo from '../assets/logo3.png';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);

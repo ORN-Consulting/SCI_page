@@ -76,14 +76,14 @@ const BusinessDetail = () => {
 
             {/* 인용 카드 */}
             <div className="bg-gray-100 rounded-xl px-10 py-8 mb-14 text-center">
-              <p className="text-gray-700 font-medium leading-loose text-base md:text-lg">
+              <p className="text-gray-700 font-medium leading-relaxed text-base md:text-lg">
                 내가 가진 기술을 가지고 사업을 하고 싶은데…<br />
                 해도 되는 걸까? 성공 가능성이 얼마나 있는 걸까?
               </p>
             </div>
 
             {/* 본문 */}
-            <div className="text-gray-700 leading-loose text-[14px] md:text-[15px] font-light break-keep space-y-6">
+            <div className="text-gray-700 leading-6 text-[14px] md:text-[15px] font-light break-keep space-y-6">
               <p>
                 기술을 통한 <strong className="font-black text-gray-950">창업</strong>은 기술 아이템에 대한 철저한 시장분석을 통하여 기술의 경제적 가치 창출 유무를 검증하고 시장진입 전략이 함께 수립되어야 보다 성공적인 기술창업이 이루어 질수 있습니다. 이러한 일련의 과정은 비즈니스 모델 수립 과정을 통한 철저한 사업 타당성 검증이 필요합니다. 그리고 비즈니스 모델을 통한 기술 창업 기업의 가치를 담아낼 수 있는 기술사업화 사업계획서의 작성이 무엇보다 중요합니다.
               </p>

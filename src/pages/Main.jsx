@@ -88,17 +88,17 @@ const Main = () => {
             <h2 className="text-4xl font-black text-gray-950 tracking-tighter">조합의 지난 활동</h2>
           </div>
           <div className="md:w-2/3">
-            <p className="text-gray-600 leading-[1.8] mb-12 font-light text-lg break-keep">
+            <p className="text-gray-600 leading-relaxed mb-12 font-light text-lg break-keep">
               소득 격차가 벌어짐에 따라 인생 실패에 대한 두려움도 커졌다. 거듭 헤어질지라도 다시 만나고 싶은 존재들. 영원 나타나지 말라고 깊숙이 매장한 공포들. 그 두 개가 하나로 이어져 있다는 것을 알기 위해 글을 씁니다. 완벽하게 끌려갈 수밖에 없는 꿈의 힘을 날마다 체험합니다. 지독한 잠꼬대 끝에 젖은 얼굴로 깨어나면 죽음의 얼굴을 마주하고 돌아온 기분. 그러던 어느 새벽, 저는 알았습니다. 나쁜 꿈이 저를 살리고 있었다는 것을요.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
               <div>
                 <h4 className="font-black text-xl mb-4 text-gray-900">인적연결사업</h4>
-                <p className="text-[15px] text-gray-500 leading-relaxed font-light">연구개발특구내의 우수한 인적자원과 유,무형 과학기술자 산을 국내 및 해외산업, 교육 등의 과학기술 연결이 필요 한 곳으로 연결</p>
+                <p className="text-[15px] text-gray-500 leading-6 font-light">연구개발특구내의 우수한 인적자원과 유,무형 과학기술자 산을 국내 및 해외산업, 교육 등의 과학기술 연결이 필요 한 곳으로 연결</p>
               </div>
               <div>
                 <h4 className="font-black text-xl mb-4 text-gray-900">인적연결사업</h4>
-                <p className="text-[15px] text-gray-500 leading-relaxed font-light">연구개발특구내의 우수한 인적자원과 유,무형 과 학기술자산을 국내 및 해외산업, 교육 등의 과학 기술 연결이 필요한 곳으로 연결</p>
+                <p className="text-[15px] text-gray-500 leading-6 font-light">연구개발특구내의 우수한 인적자원과 유,무형 과 학기술자산을 국내 및 해외산업, 교육 등의 과학 기술 연결이 필요한 곳으로 연결</p>
               </div>
             </div>
             <Link to="/about" className="inline-block px-12 py-3.5 text-gray-950 font-bold text-xs uppercase tracking-widest rounded-full border border-gray-950 hover:bg-gray-950 hover:text-white transition-all">
@@ -174,7 +174,7 @@ const Main = () => {
         <div className="w-full md:w-1/2 flex items-center px-10 md:px-20 py-16">
           <div>
             <h2 className="text-4xl md:text-5xl font-black text-gray-950 mb-10 tracking-tighter">조합활동</h2>
-            <div className="text-gray-600 leading-[1.8] text-lg font-light mb-12 space-y-6 break-keep">
+            <div className="text-gray-600 leading-relaxed text-lg font-light mb-12 space-y-6 break-keep">
               <p>이런 상황에서 다수 노동자들이 한때 가졌던 직업은 저임금 노동자들의 나라로 아웃소싱되거나 로봇에 넘겨지고 있으며, 일을 빼앗긴 노동자들은 스스로를 다시 만들어내야 한다는 난제에 부딪혀 어쩔 줄 몰라 할 수밖에 없다.</p>
               <p>저임금 노동자들의 나라로 아웃소싱되거나 로봇에 넘겨지고 있으며, 일을 빼앗긴 노동자들은 다시 만들어내야만 한다는 난제에 부딪혀 어쩔 줄 몰라 할 수밖에 없다. 이들은 마치 향수병에 걸린 사람들처럼 안정적인 동료집단과 과거의 경력을 아쉬워 한다.</p>
             </div>

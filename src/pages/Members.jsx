@@ -190,7 +190,7 @@ const Members = () => {
               </button>
 
               {expandedMembers[member.id] && (
-                <div className="mt-3 text-[13px] text-gray-400 leading-relaxed border-t border-gray-100 pt-4">
+                <div className="mt-3 text-[13px] text-gray-400 leading-6 border-t border-gray-100 pt-4">
                   해당 위원의 상세 프로젝트 수행 이력 및 주요 컨설팅 실적은 사무국을 통해 확인하실 수 있습니다.
                 </div>
               )}
