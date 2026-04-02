@@ -129,13 +129,13 @@ const Members = () => {
       </section>
 
       {/* 2. 섹션 타이틀 */}
-      <section className="pt-24 pb-10 text-center px-6">
+      <section className="pt-24 pb-10 text-center px-10 md:px-20">
         <h2 className="text-3xl md:text-4xl font-black text-gray-950 mb-4 tracking-tight">함께하는 분</h2>
         <p className="text-gray-400 text-sm font-light tracking-widest">기사단의 멤버들을 소개합니다</p>
       </section>
 
       {/* 3. 멤버 카드 그리드 */}
-      <section className="pb-32 px-6 max-w-300 mx-auto">
+      <section className="pb-32 px-10 md:px-20 max-w-300 mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-20">
           {allMembers.map((member) => (
             <div key={member.id} className="flex flex-col">

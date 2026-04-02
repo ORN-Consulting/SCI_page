@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
 const Gallery = () => {
   const { hash } = useLocation();
@@ -32,28 +32,28 @@ const Gallery = () => {
   const lectureItems = [
     {
       id: 1,
-      category: '컨설팅 & 강의 분야',
+      category: '기술창업 및 사업화',
       title: '창업 성공의 핵심 요인,\n철저한 사업 타당성 분석에서 시작.',
       desc1: '기술을 통한 창업은 기술 아이템에 대한 철저한 시장분석을 통하여 기술의 경제적 가치 창출 유무를 검증하고 사장진입 전략과 함께 수립되어야 보다 성공적인 기술창업이 이루어 질수 있습니다.',
       desc2: '이러한 일련의 과정은 비즈니스 모델 수립 과정을 통한 철저한 사업 타당성 검증이 필요합니다. 그리고 비즈니스 모델을 통한 기술 창업 가치를 담아낼 수 있는 기술 사업화 사업계획서의 작성이 무엇보다 중요합니다. 재율경영컨설팅은 기술창업분야의 오랜 전문 인력을 통하여 업종별 기술창업과 사업화를 지원해 드립니다.',
     },
     {
       id: 2,
-      category: '컨설팅 & 강의 분야',
+      category: '기술창업 및 사업화',
       title: '창업 성공의 핵심 요인,\n철저한 사업 타당성 분석에서 시작.',
       desc1: '기술을 통한 창업은 기술 아이템에 대한 철저한 시장분석을 통하여 기술의 경제적 가치 창출 유무를 검증하고 사장진입 전략과 함께 수립되어야 보다 성공적인 기술창업이 이루어 질수 있습니다.',
       desc2: '이러한 일련의 과정은 비즈니스 모델 수립 과정을 통한 철저한 사업 타당성 검증이 필요합니다. 그리고 비즈니스 모델을 통한 기술 창업 가치를 담아낼 수 있는 기술 사업화 사업계획서의 작성이 무엇보다 중요합니다. 재율경영컨설팅은 기술창업분야의 오랜 전문 인력을 통하여 업종별 기술창업과 사업화를 지원해 드립니다.',
     },
     {
       id: 3,
-      category: '컨설팅 & 강의 분야',
+      category: '기술창업 및 사업화',
       title: '창업 성공의 핵심 요인,\n철저한 사업 타당성 분석에서 시작.',
       desc1: '기술을 통한 창업은 기술 아이템에 대한 철저한 시장분석을 통하여 기술의 경제적 가치 창출 유무를 검증하고 사장진입 전략과 함께 수립되어야 보다 성공적인 기술창업이 이루어 질수 있습니다.',
       desc2: '이러한 일련의 과정은 비즈니스 모델 수립 과정을 통한 철저한 사업 타당성 검증이 필요합니다. 그리고 비즈니스 모델을 통한 기술 창업 가치를 담아낼 수 있는 기술 사업화 사업계획서의 작성이 무엇보다 중요합니다. 재율경영컨설팅은 기술창업분야의 오랜 전문 인력을 통하여 업종별 기술창업과 사업화를 지원해 드립니다.',
     },
     {
       id: 4,
-      category: '컨설팅 & 강의 분야',
+      category: '기술창업 및 사업화',
       title: '창업 성공의 핵심 요인,\n철저한 사업 타당성 분석에서 시작.',
       desc1: '기술을 통한 창업은 기술 아이템에 대한 철저한 시장분석을 통하여 기술의 경제적 가치 창출 유무를 검증하고 사장진입 전략과 함께 수립되어야 보다 성공적인 기술창업이 이루어 질수 있습니다.',
       desc2: '이러한 일련의 과정은 비즈니스 모델 수립 과정을 통한 철저한 사업 타당성 검증이 필요합니다. 그리고 비즈니스 모델을 통한 기술 창업 가치를 담아낼 수 있는 기술 사업화 사업계획서의 작성이 무엇보다 중요합니다. 재율경영컨설팅은 기술창업분야의 오랜 전문 인력을 통하여 업종별 기술창업과 사업화를 지원해 드립니다.',
@@ -75,20 +75,20 @@ const Gallery = () => {
       </section>
 
       {/* 탭 네비게이션 */}
-      <nav className="bg-black text-white sticky top-16 md:top-18 z-40">
-        <div className="max-w-360 mx-auto flex h-14">
+      <nav className="bg-black text-white border-b border-white/10 h-16">
+        <div className="max-w-360 mx-auto flex h-full items-stretch">
           <button
             onClick={() => setActiveTab('business')}
-            className={`flex-1 text-sm font-bold tracking-widest transition-colors ${
-              activeTab === 'business' ? 'bg-white text-black' : 'hover:bg-white/10 text-white'
+            className={`flex-1 h-full flex items-center justify-center text-[13px] md:text-[14px] font-black transition-all bg-black ${
+              activeTab === 'business' ? 'text-white border-b-2 border-white' : 'text-white/30 hover:text-white/60'
             }`}
           >
             사업 분야 소개
           </button>
           <button
             onClick={() => setActiveTab('lecture')}
-            className={`flex-1 text-sm font-bold tracking-widest border-l border-white/20 transition-colors ${
-              activeTab === 'lecture' ? 'bg-white text-black' : 'hover:bg-white/10 text-white'
+            className={`flex-1 h-full flex items-center justify-center text-[13px] md:text-[14px] font-black transition-all bg-black ${
+              activeTab === 'lecture' ? 'text-white border-b-2 border-white' : 'text-white/30 hover:text-white/60'
             }`}
           >
             컨설팅 & 강의 분야 소개
@@ -97,7 +97,8 @@ const Gallery = () => {
       </nav>
 
       {/* 콘텐츠 */}
-      <section className="py-20 px-6 max-w-360 mx-auto">
+      <section className="py-20 px-10 md:px-20">
+        <div className="max-w-5xl mx-auto">
 
         {/* === 탭 1: 사업 분야 소개 === */}
         {activeTab === 'lecture' && (
@@ -112,11 +113,16 @@ const Gallery = () => {
               {businessTopCards.map((card) => (
                 <div key={card.id} className="group overflow-hidden aspect-4/3 cursor-pointer">
                   <div className="flex flex-col h-[200%] transition-transform duration-500 ease-in-out group-hover:-translate-y-1/2">
-                    {/* 이미지 영역 */}
+                    {/* 기본: 이미지 + 하단 그라디언트 + 텍스트 */}
                     <div className="h-1/2 shrink-0 relative overflow-hidden">
                       <img src={card.image} alt={card.title} className="w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 p-7">
+                        <h4 className="text-white text-base font-black mb-2">{card.title}</h4>
+                        <p className="text-white/60 text-xs font-light leading-relaxed line-clamp-2">{card.desc}</p>
+                      </div>
                     </div>
-                    {/* 콘텐츠 영역 */}
+                    {/* 호버: 검은 배경 + 전체 텍스트 */}
                     <div className="h-1/2 bg-gray-950 shrink-0 flex flex-col justify-center px-7">
                       <h4 className="text-white text-base font-black mb-3">{card.title}</h4>
                       <p className="text-white/60 text-xs font-light leading-relaxed">{card.desc}</p>
@@ -140,7 +146,7 @@ const Gallery = () => {
                   <div className="aspect-4/3 bg-gray-300 mb-5" />
                   <h4 className="text-base font-black text-gray-950 mb-3">{item.title}</h4>
                   <p className="text-gray-500 text-[13px] font-light leading-relaxed mb-6">{item.desc}</p>
-                  <button className="self-start px-6 py-2.5 text-gray-900 text-xs font-bold tracking-widest uppercase rounded-full border border-transparent hover:border-gray-900 transition-all">
+                  <button className="self-start px-6 py-2.5 text-gray-950 text-xs font-bold tracking-widest uppercase rounded-full border border-gray-950 hover:bg-gray-950 hover:text-white transition-all">
                     VIEW MORE
                   </button>
                 </div>
@@ -153,7 +159,7 @@ const Gallery = () => {
         {activeTab === 'business' && (
           <div>
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-black text-gray-950 mb-3 tracking-tight">컨설팅 & 강의 분야</h2>
+              <h2 className="text-3xl md:text-4xl font-black text-gray-950 mb-3 tracking-tight">사업 분야 소개</h2>
               <p className="text-gray-400 text-sm font-light">어떤 일을 하는지, 간략하게 요약하는 페이지</p>
             </div>
 
@@ -169,9 +175,9 @@ const Gallery = () => {
                     <div className="md:w-3/5">
                       <p className="text-[14px] text-gray-500 font-light leading-relaxed mb-5 break-keep">{item.desc1}</p>
                       <p className="text-[14px] text-gray-500 font-light leading-relaxed mb-10 break-keep">{item.desc2}</p>
-                      <button className="px-8 py-3 text-gray-900 text-xs font-bold tracking-widest uppercase rounded-full border border-transparent hover:border-gray-900 transition-all">
+                      <Link to="/business" className="inline-block px-8 py-3 text-gray-950 text-xs font-bold tracking-widest uppercase rounded-full border border-gray-950 hover:bg-gray-950 hover:text-white transition-all">
                         VIEW MORE
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -180,6 +186,7 @@ const Gallery = () => {
           </div>
         )}
 
+        </div>
       </section>
     </div>
   );

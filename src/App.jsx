@@ -11,6 +11,7 @@ import Gallery from './pages/Gallery';
 import Notice from './pages/Notice';
 import Inquiry from './pages/Inquiry';
 import NoticeDetail from './pages/NoticeDetail'; // 1. 파일 불러오기
+import BusinessDetail from './pages/BusinessDetail';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="inquiry" element={<Inquiry />} />
           <Route path="notice/:id" element={<NoticeDetail />} />
           <Route path="signup" element={<Signup />} />
+          <Route path="business" element={<BusinessDetail />} />
         </Route>
       </Routes>
     </HashRouter>

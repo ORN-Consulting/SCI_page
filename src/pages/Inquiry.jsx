@@ -28,21 +28,11 @@ const Inquiry = () => {
 
   return (
     <div className="bg-white min-h-screen">
-      {/* === 1. 상단 히어로 섹션 (파란색 단색) === */}
-      <section className="relative h-[400px] flex items-center justify-center bg-[#1a4a9c]">
-        {/* 장식용 패턴 (선택 사항: 너무 밋밋할 경우를 대비해 살짝 투명한 텍스트 배치) */}
-        <div className="absolute inset-0 opacity-10 flex items-center justify-center overflow-hidden pointer-events-none">
-          <span className="text-[20rem] font-black text-white select-none tracking-tighter">INQUIRY</span>
-        </div>
-
-        <div className="relative text-center px-6">
-          <h1 className="text-4xl md:text-5xl font-black text-white tracking-[0.2em] mb-4 uppercase">
-            문의하기
-          </h1>
-          <p className="text-white/70 font-light tracking-widest uppercase text-sm">
-            Contact Us for Consultation
-          </p>
-        </div>
+      {/* === 1. 상단 히어로 섹션 === */}
+      <section className="relative h-[45vh] min-h-80 overflow-hidden flex items-center justify-center bg-black">
+        <h1 className="relative text-3xl md:text-4xl font-black text-white tracking-[0.15em]">
+          문의하기
+        </h1>
       </section>
 
       {/* === 2. 문의 폼 섹션 === */}
@@ -120,23 +110,6 @@ const Inquiry = () => {
         </form>
       </section>
 
-      {/* 3. 간단한 위치/연락처 정보 (선택 사항) */}
-      <section className="py-20 bg-gray-50 border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-          <div>
-            <h4 className="text-[11px] font-black text-[#1a4a9c] uppercase tracking-widest mb-4">Location</h4>
-            <p className="text-gray-600 font-light">경기도 안양시 동안구 시민대로 ...</p>
-          </div>
-          <div>
-            <h4 className="text-[11px] font-black text-[#1a4a9c] uppercase tracking-widest mb-4">Contact</h4>
-            <p className="text-gray-600 font-light">T. 031-000-0000<br/>E. support@sci.or.kr</p>
-          </div>
-          <div>
-            <h4 className="text-[11px] font-black text-[#1a4a9c] uppercase tracking-widest mb-4">Working Hours</h4>
-            <p className="text-gray-600 font-light">평일 09:00 - 18:00<br/>주말 및 공휴일 휴무</p>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

@@ -32,27 +32,17 @@ const Notice = () => {
 
   return (
     <div className="bg-white min-h-screen">
-      {/* 2. 상단 히어로 섹션 (다른 페이지와 크기/디자인 통일) */}
-      <section className="relative h-[300px] md:h-[400px] overflow-hidden flex items-center justify-center text-center">
-        <img 
-          src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070" 
-          alt="Notice Background"
-          className="absolute inset-0 w-full h-full object-cover scale-105"
+      {/* 2. 상단 히어로 섹션 */}
+      <section className="relative h-[45vh] min-h-80 overflow-hidden flex items-center justify-center">
+        <img
+          src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=2070"
+          alt="Hero"
+          className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
-          <div className="w-full px-6">
-            <div className="max-w-3xl mx-auto animate-fadeInUp">
-              <p className="text-[#1a4a9c] font-bold tracking-[0.2em] mb-4 text-sm md:text-base uppercase">Notice</p>
-              <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight leading-tight mb-4">
-                공지사항
-              </h1>
-              <p className="text-xl md:text-2xl font-bold text-white mb-10 leading-relaxed whitespace-pre-line tracking-tight">
-                과학기술인협동조합의 새로운 소식과<br className="md:hidden" /> 주요 안내 사항을 전해드립니다.
-              </p>
-              <div className="w-12 h-1 bg-white mx-auto mt-8 opacity-50 rounded-full"></div>
-            </div>
-          </div>
-        </div>
+        <div className="absolute inset-0 bg-black/50"></div>
+        <h1 className="relative text-3xl md:text-4xl font-black text-white tracking-[0.15em]">
+          공지사항
+        </h1>
       </section>
 
       {/* 3. 게시판 본문 섹션 */}

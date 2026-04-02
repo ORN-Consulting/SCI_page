@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#111] text-white px-6">
+    <footer className="bg-[#111] text-white px-10 md:px-32">
       <div className="max-w-360 mx-auto">
 
         {/* 상단 네비게이션 */}
