@@ -30,7 +30,7 @@ const BusinessDetail = () => {
 
       {/* 탭 1: 사업 분야 소개 */}
       {(
-        <section className="py-36 px-28 md:px-56">
+        <section className="pt-11 pb-36 px-28 md:px-56">
           <div className="max-w-5xl mx-auto">
 
             {/* 서브 탭바 */}

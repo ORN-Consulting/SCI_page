@@ -29,12 +29,15 @@ const NoticeDetail = () => {
 
   return (
     <div className="bg-white min-h-screen pb-20">
-      {/* 1. 상단 배너 (다른 페이지와 통일) */}
-      <section className="bg-gray-50 py-12 px-6 border-b border-gray-100">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-[#1a4a9c] font-bold text-sm uppercase tracking-widest mb-2">Notice</h2>
-          <h1 className="text-3xl font-bold text-gray-900">공지사항</h1>
-        </div>
+      {/* 1. 히어로 섹션 */}
+      <section className="relative h-[35vh] min-h-72 overflow-hidden flex items-center justify-center">
+        <img
+          src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=2070"
+          alt="Notice Hero"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/50"></div>
+        <h1 className="relative text-3xl md:text-4xl font-black text-white tracking-[0.15em]">공지사항</h1>
       </section>
 
       {/* 2. 게시글 상세 영역 */}

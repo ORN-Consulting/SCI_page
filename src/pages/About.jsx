@@ -145,7 +145,7 @@ const About = () => {
       <section
         id="organization"
         ref={organizationRef}
-        className="py-16 px-10 md:px-20 bg-white scroll-mt-32 md:scroll-mt-26 flex items-center"
+        className="pt-16 pb-41 px-10 md:px-20 bg-white scroll-mt-32 md:scroll-mt-26 flex items-center"
       >
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl font-black text-gray-950 mb-14 tracking-tight">조직도</h2>
