@@ -29,7 +29,7 @@ const Inquiry = () => {
   return (
     <div className="bg-white min-h-screen">
       {/* === 1. 상단 히어로 섹션 === */}
-      <section className="relative h-[45vh] min-h-80 overflow-hidden flex items-center justify-center bg-black">
+      <section className="relative h-[35vh] min-h-72 overflow-hidden flex items-center justify-center bg-black">
         <h1 className="relative text-3xl md:text-4xl font-black text-white tracking-[0.15em]">
           문의하기
         </h1>

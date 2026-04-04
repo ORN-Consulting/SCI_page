@@ -68,7 +68,7 @@ const Login = () => {
           {/* 로그인 버튼 */}
           <button
             type="submit"
-            className="w-full bg-gray-700 hover:bg-gray-900 text-white font-black text-sm tracking-widest py-4 transition-colors"
+            className="w-full bg-black hover:bg-gray-800 text-white font-black text-sm tracking-widest py-4 transition-colors"
           >
             로그인
           </button>

@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import logo from '../assets/logo3.png';
+import logoW from '../assets/logo_W.png';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isAtBottom, setIsAtBottom] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -51,7 +53,10 @@ const Header = () => {
   ];
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+      setIsAtBottom(window.scrollY === 0);
+    };
     handleScroll();
     const checkUser = async () => {
       const { data: { user } } = await supabase.auth.getUser();
@@ -85,7 +90,7 @@ const Header = () => {
     <>
       <header 
         // 높이 축소: 모바일 h-14(56px), 데스크톱 h-16(64px)
-        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 h-16 md:h-18 border-b ${
+        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 h-15 border-b ${
           shouldShowWhite ? 'bg-white/90 backdrop-blur-md shadow-sm border-gray-100' : 'bg-transparent border-white/10'
         }`}
         onMouseEnter={() => window.innerWidth > 1024 && setIsHovered(true)}
@@ -96,24 +101,40 @@ const Header = () => {
           {/* 1. 로고 영역 (너비 250px 고정) */}
           <div className="w-auto lg:w-[250px] flex-shrink-0">
             <Link to="/" onClick={handleNavClick}>
-              <img src={logo} alt="과학기술인협동조합" className="h-8 md:h-10 w-auto object-contain" />
+              <img src={isAtBottom ? logoW : logo} alt="과학기술인협동조합" className="h-8 md:h-10 w-auto object-contain" />
             </Link>
           </div>
 
-          {/* 2. 메인 네비게이션 (중앙 800px 그리드 정렬) */}
-          <nav className="hidden lg:flex flex-grow max-w-125 h-full justify-between items-center">
+          {/* 2. 메인 네비게이션 */}
+          <nav className="hidden lg:flex grow h-full justify-center items-center gap-10">
             {menuConfig.map((item, idx) => (
-              <div key={idx} className="flex-1 text-center h-full">
+              <div key={idx} className="relative h-full flex items-center">
                 <Link
                   to={item.path}
                   onClick={handleNavClick}
-                  className={`h-full flex items-center justify-center text-[14px] font-bold transition-all relative px-2 ${
+                  className={`h-full flex items-center text-[14px] font-bold transition-all relative whitespace-nowrap ${
                     shouldShowWhite ? 'text-gray-900' : 'text-white'
                   } hover:text-black group`}
                 >
                   {item.title}
                   <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
                 </Link>
+
+                {/* 아이템별 드롭다운 */}
+                {isHovered && item.subItems && item.subItems.length > 0 && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 px-6 py-5 flex flex-col items-center gap-3 z-10">
+                    {item.subItems.map((sub, sIdx) => (
+                      <Link
+                        key={sIdx}
+                        to={sub.path}
+                        onClick={closeAllMenus}
+                        className="text-gray-500 hover:text-black text-[13px] font-medium transition-colors whitespace-nowrap"
+                      >
+                        {sub.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </nav>
@@ -213,31 +234,11 @@ const Header = () => {
           </div>
         </div>
 
-        {/* 4. 드롭다운 판넬 (높이 축소에 맞춰 top-14/16 조정) */}
-        <div 
-          className={`hidden lg:block absolute top-16 md:top-18 left-0 w-full bg-white/90 backdrop-blur-md overflow-hidden transition-all duration-500 ${
-            isHovered ? 'max-h-[350px] py-10 opacity-100' : 'max-h-0 py-0 opacity-0'
-          }`}
-        >
-          <div className="max-w-[1440px] mx-auto px-10 flex justify-between">
-            <div className="w-[250px] flex-shrink-0" />
-            
-            {/* 상단 메뉴와 수직 일치 시키는 그리드 */}
-            <div className="flex-grow max-w-125 grid grid-cols-4 justify-items-center">
-              {menuConfig.map((menu, idx) => (
-                <div key={idx} className="flex flex-col items-center space-y-3.5">
-                  {menu.subItems.map((sub, sIdx) => (
-                    <Link key={sIdx} to={sub.path} onClick={closeAllMenus} className="text-gray-400 hover:text-[#1a4a9c] text-[13px] font-medium transition-colors break-keep">
-                      {sub.name}
-                    </Link>
-                  ))}
-                </div>
-              ))}
-            </div>
+        {/* 전체 너비 드롭다운 배경 패널 */}
+        <div className={`hidden lg:block absolute top-15 left-0 w-full bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300 pointer-events-none ${
+          isHovered ? 'opacity-100 h-36' : 'opacity-0 h-0'
+        }`} />
 
-            <div className="w-[250px] flex-shrink-0" />
-          </div>
-        </div>
       </header>
     </>
   );

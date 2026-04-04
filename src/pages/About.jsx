@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const PersonCard = ({ name = 'John Smith' }) => (
@@ -70,7 +70,7 @@ const About = () => {
     <div className="bg-white min-h-screen">
 
       {/* 1. 히어로 배너 */}
-      <section className="relative h-[45vh] min-h-80 overflow-hidden flex items-center justify-center">
+      <section className="relative h-[35vh] min-h-72 overflow-hidden flex items-center justify-center">
         <img
           src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=2070"
           alt="Hero"
@@ -78,12 +78,12 @@ const About = () => {
         />
         <div className="absolute inset-0 bg-black/50"></div>
         <h1 className="relative text-3xl md:text-4xl font-black text-white tracking-[0.15em]">
-          과학기술인협동조합
+          조합 소개
         </h1>
       </section>
 
       {/* 2. 탭바 */}
-      <nav className="sticky top-16 md:top-18 z-40 bg-black text-white border-b border-white/10 h-16">
+      <nav className="sticky top-15 z-40 bg-black text-white border-b border-white/10 h-10">
         <div className="max-w-7xl mx-auto flex h-full items-stretch">
           {[
             { id: 'greetings', label: '인사말' },
@@ -109,9 +109,9 @@ const About = () => {
       <section
         id="greetings"
         ref={greetingsRef}
-        className="py-20 px-10 md:px-20 bg-white scroll-mt-32 md:scroll-mt-26"
+        className="h-200 px-10 md:px-20 bg-white scroll-mt-32 md:scroll-mt-26 flex items-center"
       >
-        <div className="max-w-2xl mx-auto bg-gray-50 rounded-2xl p-10 md:p-14">
+        <div className="max-w-2xl mx-auto w-full bg-gray-50 rounded-2xl p-10 md:p-14">
           <h2 className="text-2xl font-black text-gray-950 text-center mb-8 tracking-tight">인사말</h2>
           <div className="text-gray-600 leading-6 md:leading-relaxed text-sm md:text-base font-light break-keep space-y-4">
             <p>국가과학기술 경쟁력 강화를 위한 이공계지원 특별법, 제2조 제1항 및 동법 시행령 제2조 제1항에 의한 이공계 인력이 조합원으로 참여하여 과학기술 관련 서비스 동력 활동을 하기위해 '협동조합기본법'에 의해 설립된 협동 조합으로, 과학기술인 협동조합지원센터의 확인을 받은 기업입니다. 과학기술인 협동조합은 중소기업기본법 이래 중소기업으로 중소기업과 같이 전자 세금계산서 발급 등, 공공입찰 등 모든 업무처리가 동일하게 가능합니다.</p>
@@ -124,9 +124,9 @@ const About = () => {
       <section
         id="intro"
         ref={introRef}
-        className="py-20 px-10 md:px-20 bg-gray-50 scroll-mt-32 md:scroll-mt-26"
+        className="h-225 px-10 md:px-20 bg-gray-50 scroll-mt-32 md:scroll-mt-26 flex items-center"
       >
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto w-full">
           <h2 className="text-2xl font-black text-gray-950 text-center mb-10 tracking-tight">소개</h2>
           <img
             src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070"
@@ -145,7 +145,7 @@ const About = () => {
       <section
         id="organization"
         ref={organizationRef}
-        className="py-20 px-10 md:px-20 bg-white scroll-mt-32 md:scroll-mt-26"
+        className="h-200 px-10 md:px-20 bg-white scroll-mt-32 md:scroll-mt-26 flex items-center"
       >
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl font-black text-gray-950 mb-14 tracking-tight">조직도</h2>

@@ -33,7 +33,7 @@ const Notice = () => {
   return (
     <div className="bg-white min-h-screen">
       {/* 2. 상단 히어로 섹션 */}
-      <section className="relative h-[45vh] min-h-80 overflow-hidden flex items-center justify-center">
+      <section className="relative h-[35vh] min-h-72 overflow-hidden flex items-center justify-center">
         <img
           src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=2070"
           alt="Hero"
@@ -124,13 +124,13 @@ const Notice = () => {
 
         {/* 5. 페이지네이션 (디자인 유지) */}
         <div className="mt-12 flex justify-center space-x-2">
-          <button className="w-10 h-10 flex items-center justify-center border border-gray-200 rounded-lg text-gray-400 hover:border-[#1a4a9c] hover:text-[#1a4a9c] transition-all">
+          <button className="w-10 h-10 flex items-center justify-center border border-gray-200 rounded-lg text-gray-400 hover:border-black hover:text-black transition-all">
             &lt;
           </button>
-          <button className="w-10 h-10 flex items-center justify-center bg-[#1a4a9c] text-white rounded-lg font-bold shadow-md">
+          <button className="w-10 h-10 flex items-center justify-center bg-black text-white rounded-lg font-bold shadow-md">
             1
           </button>
-          <button className="w-10 h-10 flex items-center justify-center border border-gray-200 rounded-lg text-gray-400 hover:border-[#1a4a9c] hover:text-[#1a4a9c] transition-all">
+          <button className="w-10 h-10 flex items-center justify-center border border-gray-200 rounded-lg text-gray-400 hover:border-black hover:text-black transition-all">
             &gt;
           </button>
         </div>

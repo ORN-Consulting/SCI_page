@@ -1,18 +1,11 @@
-import React, { useState } from 'react';
 
 const Members = () => {
-  const [expandedMembers, setExpandedMembers] = useState({});
-
-  const toggleExpand = (id) => {
-    setExpandedMembers(prev => ({ ...prev, [id]: !prev[id] }));
-  };
-
   const allMembers = [
     {
       id: 1,
       name: "이자현",
       role: "이사장",
-      image: null,
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&h=600&fit=crop&crop=face",
       career: [
         "가천대학교 대학원 회계세무학과 박사 (수료)",
         "인하대학교 대학원 기계공학 석사",
@@ -29,7 +22,7 @@ const Members = () => {
       id: 2,
       name: "백종일",
       role: "컨설팅지원 단장",
-      image: null,
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&h=600&fit=crop&crop=face",
       career: [
         "가천대학교 대학원 회계세무학과 박사 (수료)",
         "인하대학교 대학원 기계공학 석사",
@@ -46,7 +39,7 @@ const Members = () => {
       id: 3,
       name: "여재호",
       role: "교육지원 단장",
-      image: null,
+      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&h=600&fit=crop&crop=face",
       career: [
         "가천대학교 대학원 회계세무학과 박사 (수료)",
         "인하대학교 대학원 기계공학 석사",
@@ -63,7 +56,7 @@ const Members = () => {
       id: 4,
       name: "이동호",
       role: "기업혁신지원 단장",
-      image: null,
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&h=600&fit=crop&crop=face",
       career: [
         "가천대학교 대학원 회계세무학과 박사 (수료)",
         "인하대학교 대학원 기계공학 석사",
@@ -80,7 +73,7 @@ const Members = () => {
       id: 5,
       name: "임충일",
       role: "R&D기획지원 단장",
-      image: null,
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&h=600&fit=crop&crop=face",
       career: [
         "가천대학교 대학원 회계세무학과 박사 (수료)",
         "인하대학교 대학원 기계공학 석사",
@@ -97,7 +90,7 @@ const Members = () => {
       id: 6,
       name: "최여원",
       role: "시장진출지원 단장",
-      image: null,
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&h=600&fit=crop&crop=face",
       career: [
         "가천대학교 대학원 회계세무학과 박사 (수료)",
         "인하대학교 대학원 기계공학 석사",
@@ -116,7 +109,7 @@ const Members = () => {
     <div className="bg-white min-h-screen">
 
       {/* 1. 히어로 섹션 */}
-      <section className="relative h-[45vh] min-h-80 overflow-hidden flex items-center justify-center">
+      <section className="relative h-[35vh] min-h-72 overflow-hidden flex items-center justify-center">
         <img
           src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=2070"
           alt="Members Hero"
@@ -124,7 +117,7 @@ const Members = () => {
         />
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative text-center">
-          <h1 className="text-3xl md:text-4xl font-black text-white tracking-[0.15em]">과학기술인협동조합</h1>
+          <h1 className="text-3xl md:text-4xl font-black text-white tracking-[0.15em]">조합원 소개</h1>
         </div>
       </section>
 
@@ -141,7 +134,7 @@ const Members = () => {
             <div key={member.id} className="flex flex-col">
 
               {/* 프로필 이미지 */}
-              <div className="w-full aspect-4/3 bg-gray-300 overflow-hidden">
+              <div className="w-full aspect-3/4 bg-gray-300 overflow-hidden">
                 {member.image && (
                   <img
                     src={member.image}
@@ -181,19 +174,6 @@ const Members = () => {
                 </ul>
               </div>
 
-              {/* 더보기 */}
-              <button
-                onClick={() => toggleExpand(member.id)}
-                className="mt-6 flex items-center gap-1 text-[13px] text-gray-500 hover:text-gray-900 transition-colors font-light"
-              >
-                <span className="text-[10px]">▶</span> 더보기
-              </button>
-
-              {expandedMembers[member.id] && (
-                <div className="mt-3 text-[13px] text-gray-400 leading-6 border-t border-gray-100 pt-4">
-                  해당 위원의 상세 프로젝트 수행 이력 및 주요 컨설팅 실적은 사무국을 통해 확인하실 수 있습니다.
-                </div>
-              )}
             </div>
           ))}
         </div>

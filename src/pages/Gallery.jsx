@@ -15,9 +15,9 @@ const Gallery = () => {
   }, [hash]);
 
   const businessTopCards = [
-    { id: 1, title: '이자현 | 이사장', desc: '동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한 사람 대한으로 길이 보전하세.', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800' },
-    { id: 2, title: '이자현 | 이사장', desc: '동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한 사람 대한으로 길이 보전하세.', image: 'https://images.unsplash.com/photo-1454165833767-027ffea9e778?q=80&w=800' },
-    { id: 3, title: '이자현 | 이사장', desc: '동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한 사람 대한으로 길이 보전하세.', image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=800' },
+    { id: 1, title: '프로젝트 1', desc: '동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한 사람 대한으로 길이 보전하세.', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800' },
+    { id: 2, title: '프로젝트 1', desc: '동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한 사람 대한으로 길이 보전하세.', image: 'https://images.unsplash.com/photo-1454165833767-027ffea9e778?q=80&w=800' },
+    { id: 3, title: '프로젝트 1', desc: '동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한 사람 대한으로 길이 보전하세.', image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=800' },
   ];
 
   const businessHistoryItems = [
@@ -64,18 +64,18 @@ const Gallery = () => {
     <div className="bg-white min-h-screen">
 
       {/* 히어로 섹션 — Members와 동일 */}
-      <section className="relative h-[45vh] min-h-80 overflow-hidden flex items-center justify-center">
+      <section className="relative h-[35vh] min-h-72 overflow-hidden flex items-center justify-center">
         <img
           src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=2070"
           alt="Gallery Hero"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/50"></div>
-        <h1 className="relative text-3xl md:text-4xl font-black text-white tracking-[0.15em]">과학기술인협동조합</h1>
+        <h1 className="relative text-3xl md:text-4xl font-black text-white tracking-[0.15em]">갤러리</h1>
       </section>
 
       {/* 탭 네비게이션 */}
-      <nav className="bg-black text-white border-b border-white/10 h-16">
+      <nav className="bg-black text-white border-b border-white/10 h-10">
         <div className="max-w-360 mx-auto flex h-full items-stretch">
           <button
             onClick={() => setActiveTab('business')}
@@ -164,18 +164,22 @@ const Gallery = () => {
             </div>
 
             <div className="space-y-8">
-              {lectureItems.map((item) => (
-                <div key={item.id} className="rounded-2xl border border-gray-200 p-10 md:p-14">
+              {lectureItems.map((item, index) => (
+                <div key={item.id} style={index % 2 !== 0 ? { backgroundColor: '#F3F4F6' } : {}} className="rounded-2xl border border-gray-200 overflow-hidden p-10 md:p-12">
+                  {/* 상단: 카테고리 + 구분선 */}
+                  <div className="flex items-center gap-6 mb-8">
+                    <p className="text-xs text-gray-400 font-light tracking-widest shrink-0">{item.category}</p>
+                    <hr className="border-gray-300 flex-1" />
+                  </div>
+                  {/* 하단: 제목 + 본문 */}
                   <div className="flex flex-col md:flex-row gap-10 md:gap-16">
                     <div className="md:w-2/5 shrink-0">
-                      <p className="text-xs text-gray-400 font-light mb-4 tracking-widest">{item.category}</p>
-                      <hr className="border-gray-300 mb-6" />
                       <h3 className="text-xl md:text-2xl font-black text-gray-950 leading-snug whitespace-pre-line">{item.title}</h3>
                     </div>
-                    <div className="md:w-3/5">
+                    <div className="md:w-3/5 flex flex-col justify-center">
                       <p className="text-[14px] text-gray-500 font-light leading-6 mb-5 break-keep">{item.desc1}</p>
                       <p className="text-[14px] text-gray-500 font-light leading-6 mb-10 break-keep">{item.desc2}</p>
-                      <Link to="/business" className="inline-block px-8 py-3 text-gray-950 text-xs font-bold tracking-widest uppercase rounded-full border border-gray-950 hover:bg-gray-950 hover:text-white transition-all">
+                      <Link to="/business" className="inline-block self-start px-5 py-3 text-gray-950 text-xs font-bold tracking-widest uppercase rounded-full border border-gray-950 hover:bg-gray-950 hover:text-white transition-all">
                         VIEW MORE
                       </Link>
                     </div>
