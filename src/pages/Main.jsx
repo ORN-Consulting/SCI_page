@@ -161,7 +161,7 @@ const Main = () => {
       </section>
 
       {/* === 4. 조합활동 (이미지 좌측 전체) === */}
-      <section className="h-250 bg-gray-100 flex flex-col md:flex-row items-stretch">
+      <section className="h-200 bg-gray-100 flex flex-col md:flex-row items-stretch">
         {/* 이미지: 화면 절반 전체 차지 */}
         <div className="w-full md:w-2/5 h-80 md:h-auto">
           <img
