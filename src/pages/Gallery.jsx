@@ -104,12 +104,12 @@ const Gallery = () => {
         {activeTab === 'lecture' && (
           <div>
             {/* 대표 활동 소개 */}
-            <div className="text-center mb-14">
-              <h2 className="text-3xl md:text-4xl font-black text-gray-950 mb-3 tracking-tight">대표 활동 소개</h2>
-              <p className="text-gray-400 text-sm font-light">어떤 일을 하는지, 간략하게 요약하는 페이지</p>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-normal text-gray-950 mb-3 tracking-tight">대표 활동 소개</h2>
+              <p className="text-gray-400 text-sm font-normal">어떤 일을 하는지, 간략하게 요약하는 페이지</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-28">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-32">
               {businessTopCards.map((card) => (
                 <div key={card.id} className="group overflow-hidden aspect-4/3 cursor-pointer">
                   <div className="flex flex-col h-[200%] transition-transform duration-500 ease-in-out group-hover:-translate-y-1/2">
@@ -118,35 +118,35 @@ const Gallery = () => {
                       <img src={card.image} alt={card.title} className="w-full h-full object-cover" />
                       <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
                       <div className="absolute bottom-0 left-0 right-0 p-7">
-                        <h4 className="text-white text-base font-black mb-2">{card.title}</h4>
-                        <p className="text-white/60 text-xs font-light leading-relaxed line-clamp-2">{card.desc}</p>
+                        <h4 className="text-white text-base font-normal mb-2">{card.title}</h4>
+                        <p className="text-white/60 text-xs font-normal leading-relaxed line-clamp-2">{card.desc}</p>
                       </div>
                     </div>
                     {/* 호버: 검은 배경 + 전체 텍스트 */}
                     <div className="h-1/2 bg-gray-950 shrink-0 flex flex-col justify-center px-7">
-                      <h4 className="text-white text-base font-black mb-3">{card.title}</h4>
-                      <p className="text-white/60 text-xs font-light leading-relaxed">{card.desc}</p>
+                      <h4 className="text-white text-base font-normal mb-3">{card.title}</h4>
+                      <p className="text-white/60 text-xs font-normal leading-relaxed">{card.desc}</p>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
 
-            <hr className="border-gray-200 mb-28" />
+            <hr className="border-gray-200 mb-32" />
 
             {/* 조합의 지난 활동 */}
-            <div className="text-center mb-14">
-              <h2 className="text-3xl md:text-4xl font-black text-gray-950 mb-3 tracking-tight">조합의 지난 활동</h2>
-              <p className="text-gray-400 text-sm font-light tracking-widest">기사단이 그동안 쌓은 히스토리</p>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-normal text-gray-950 mb-3 tracking-tight">조합의 지난 활동</h2>
+              <p className="text-gray-400 text-sm font-normal tracking-widest">기사단이 그동안 쌓은 히스토리</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-20">
               {businessHistoryItems.map((item) => (
                 <div key={item.id} className="flex flex-col">
                   <div className="aspect-4/3 bg-gray-300 mb-5" />
-                  <h4 className="text-base font-black text-gray-950 mb-3">{item.title}</h4>
-                  <p className="text-gray-500 text-[13px] font-light leading-6 mb-6">{item.desc}</p>
-                  <button className="self-start px-6 py-2.5 text-gray-950 text-xs font-bold tracking-widest uppercase rounded-full border border-gray-950 hover:bg-gray-950 hover:text-white transition-all">
+                  <h4 className="text-base font-normal text-gray-950 mb-3">{item.title}</h4>
+                  <p className="text-gray-500 text-[13px] font-normal leading-6 mb-6">{item.desc}</p>
+                  <button className="self-start px-6 py-2.5 text-gray-950 text-xs font-normal tracking-widest uppercase rounded-full border border-gray-950 hover:bg-gray-950 hover:text-white transition-all">
                     VIEW MORE
                   </button>
                 </div>

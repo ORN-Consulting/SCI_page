@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="w-full">
 
         {/* 상단 네비게이션 */}
-        <div className="flex flex-wrap gap-8 py-3 border-b border-white/10 text-base font-light text-white/50 uppercase tracking-widest">
+        <div className="flex flex-wrap gap-8 py-3 border-b border-white/10 text-xs font-light text-white/50 uppercase tracking-widest">
           <Link to="/about"   className="hover:text-white transition-colors">조합소개</Link>
           <Link to="/members" className="hover:text-white transition-colors">조합원소개</Link>
           <Link to="/gallery" className="hover:text-white transition-colors">컨설팅갤러리</Link>

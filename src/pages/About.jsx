@@ -109,7 +109,7 @@ const About = () => {
       <section
         id="greetings"
         ref={greetingsRef}
-        className="h-200 px-10 md:px-20 bg-white scroll-mt-32 md:scroll-mt-26 flex items-center"
+        className="py-16 px-10 md:px-20 bg-white scroll-mt-32 md:scroll-mt-26 flex items-center"
       >
         <div className="max-w-2xl mx-auto w-full bg-gray-50 rounded-2xl p-10 md:p-14">
           <h2 className="text-2xl font-black text-gray-950 text-center mb-8 tracking-tight">인사말</h2>
@@ -124,7 +124,7 @@ const About = () => {
       <section
         id="intro"
         ref={introRef}
-        className="h-225 px-10 md:px-20 bg-gray-50 scroll-mt-32 md:scroll-mt-26 flex items-center"
+        className="py-16 px-10 md:px-20 bg-gray-50 scroll-mt-32 md:scroll-mt-26 flex items-center"
       >
         <div className="max-w-2xl mx-auto w-full">
           <h2 className="text-2xl font-black text-gray-950 text-center mb-10 tracking-tight">소개</h2>
@@ -145,7 +145,7 @@ const About = () => {
       <section
         id="organization"
         ref={organizationRef}
-        className="h-200 px-10 md:px-20 bg-white scroll-mt-32 md:scroll-mt-26 flex items-center"
+        className="py-16 px-10 md:px-20 bg-white scroll-mt-32 md:scroll-mt-26 flex items-center"
       >
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl font-black text-gray-950 mb-14 tracking-tight">조직도</h2>

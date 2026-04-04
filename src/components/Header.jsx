@@ -101,7 +101,7 @@ const Header = () => {
           {/* 1. 로고 영역 (너비 250px 고정) */}
           <div className="w-auto lg:w-[250px] flex-shrink-0">
             <Link to="/" onClick={handleNavClick}>
-              <img src={isAtBottom ? logoW : logo} alt="과학기술인협동조합" className="h-8 md:h-10 w-auto object-contain" />
+              <img src={isAtBottom && !isAuthPage && !isHovered ? logoW : logo} alt="과학기술인협동조합" className="h-8 md:h-10 w-auto object-contain" />
             </Link>
           </div>
 
