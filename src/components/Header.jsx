@@ -97,7 +97,7 @@ const Header = () => {
         onMouseLeave={() => window.innerWidth > 1024 && setIsHovered(false)}
       >
         <div className="max-w-[1440px] mx-auto px-10 md:px-20 h-full flex items-center justify-between">
-          
+
           {/* 1. 로고 영역 (너비 250px 고정) */}
           <div className="w-auto lg:w-[250px] flex-shrink-0">
             <Link to="/" onClick={handleNavClick}>
@@ -106,7 +106,7 @@ const Header = () => {
           </div>
 
           {/* 2. 메인 네비게이션 */}
-          <nav className="hidden lg:flex grow h-full justify-center items-center gap-10">
+          <nav className="hidden lg:flex grow h-full justify-center items-center gap-10 pl-36">
             {menuConfig.map((item, idx) => (
               <div key={idx} className="relative h-full flex items-center">
                 <Link

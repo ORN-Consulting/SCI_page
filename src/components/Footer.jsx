@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="w-full">
 
         {/* 상단 네비게이션 */}
-        <div className="flex flex-wrap gap-8 py-3 border-b border-white/10 text-xs font-light text-white/50 uppercase tracking-widest">
+        <div className="flex flex-wrap gap-8 pt-8 pb-0 border-b border-white/10 text-[10px] font-light text-white/50 uppercase tracking-widest">
           <Link to="/about"   className="hover:text-white transition-colors">조합소개</Link>
           <Link to="/members" className="hover:text-white transition-colors">조합원소개</Link>
           <Link to="/gallery" className="hover:text-white transition-colors">컨설팅갤러리</Link>
@@ -16,7 +16,7 @@ const Footer = () => {
         </div>
 
         {/* 하단 로고 + 연락처 */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center py-6 gap-8">
+        <div className="flex flex-col md:flex-row justify-center items-start md:items-center py-6 gap-20">
 
           {/* 로고 */}
           <Link to="/">
@@ -24,7 +24,7 @@ const Footer = () => {
           </Link>
 
           {/* 연락처 */}
-          <div className="text-[14px] font-light text-white/30 leading-loose tracking-wide text-left md:text-right">
+          <div className="text-[14px] font-light text-white/30 leading-loose tracking-wide text-left">
             <p>00000 서울특별시 강남구 논현로12길 19-9(개포동) 06312 한국</p>
             <p>Tel. 010-0000-0000 &nbsp;&nbsp;&nbsp; Fax. 010-0000-0000</p>
             <p>Email. example@gmail.com</p>

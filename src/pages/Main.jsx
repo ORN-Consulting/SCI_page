@@ -101,7 +101,7 @@ const Main = () => {
                 <p className="text-[14px] text-gray-500 leading-6 font-normal">연구개발특구내의 우수한 인적자원과 유,무형 과학기술자산을 국내 및 해외산업, 교육 등의 과학기술 연결이 필요한 곳으로 연결</p>
               </div>
             </div>
-            <Link to="/about" className="inline-block px-12 py-3.5 text-gray-950 font-bold text-xs uppercase tracking-widest rounded-full border border-gray-950 hover:bg-gray-950 hover:text-white transition-all">
+            <Link to="/about" className="inline-block px-4 py-2.5 text-gray-950 font-bold text-xs uppercase tracking-widest rounded-full border border-gray-950 hover:bg-gray-950 hover:text-white transition-all">
               VIEW MORE
             </Link>
           </div>
@@ -134,7 +134,7 @@ const Main = () => {
                   <div className="absolute bottom-8 left-8 text-white">
                     <h3 className="text-[28px] font-bold mb-2 uppercase tracking-tighter">Vision</h3>
                     <p className="text-[14px] font-normal leading-6 opacity-70">
-                      {item.date}, {item.title.substring(0, 20)}...
+                      {item.title.substring(0, 20)}...
                     </p>
                   </div>
                 </div>
@@ -178,7 +178,7 @@ const Main = () => {
               <p>기술을 통한 <strong className="font-bold text-gray-900">창업</strong>은 기술 아이템에 대한 철저한 시장분석을 통하여 기술의 경제적 가치 창출 유무를 검증하고 시장진입 전략이 함께 수립되어야 보다 성공적인 기술창업이 이루어 질수 있습니다. 이러한 일련의 과정은 비즈니스 모델 수립 과정을 통한 철저한 사업 타당성 검증이 필요합니다. 그리고 비즈니스 모델을 통한 기술 창업 기업의 가치를 담아낼 수 있는 기술 사업화 사업계획서의 작성이 무엇보다 중요합니다.</p>
               <p>많은 기업들이 끊임없는 기술 개발을 통하여 수 많은 자체 개발 기술을 보유하고 있고 대부분 독점적 권리확보를 위해 자사가 개발한 기술을 산업재산권의 <strong className="font-bold text-gray-900">출원</strong> 및 등록합니다.</p>
             </div>
-            <Link to="/gallery" className="px-10 py-3.5 text-gray-950 font-bold text-xs uppercase tracking-widest rounded-full border border-gray-950 hover:bg-gray-950 hover:text-white transition-all">
+            <Link to="/gallery" className="px-4 py-2.5 text-gray-950 font-bold text-xs uppercase tracking-widest rounded-full border border-gray-950 hover:bg-gray-950 hover:text-white transition-all">
               VIEW MORE
             </Link>
           </div>

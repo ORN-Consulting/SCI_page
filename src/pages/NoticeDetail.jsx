@@ -49,9 +49,6 @@ const NoticeDetail = () => {
           </h2>
           <div className="flex flex-wrap gap-6 text-sm text-gray-500">
             <div className="flex items-center">
-              <span className="font-bold text-gray-900 mr-2">작성일</span> {notice.date}
-            </div>
-            <div className="flex items-center">
               <span className="font-bold text-gray-900 mr-2">조회수</span> {notice.views}
             </div>
           </div>

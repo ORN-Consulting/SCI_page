@@ -146,7 +146,7 @@ const Gallery = () => {
                   <div className="aspect-4/3 bg-gray-300 mb-5" />
                   <h4 className="text-base font-normal text-gray-950 mb-3">{item.title}</h4>
                   <p className="text-gray-500 text-[13px] font-normal leading-6 mb-6">{item.desc}</p>
-                  <button className="self-start px-6 py-2.5 text-gray-950 text-xs font-normal tracking-widest uppercase rounded-full border border-gray-950 hover:bg-gray-950 hover:text-white transition-all">
+                  <button className="self-start px-4 py-2.5 text-gray-950 text-xs font-normal tracking-widest uppercase rounded-full border border-gray-950 hover:bg-gray-950 hover:text-white transition-all">
                     VIEW MORE
                   </button>
                 </div>
@@ -179,7 +179,7 @@ const Gallery = () => {
                     <div className="md:w-3/5 flex flex-col justify-center">
                       <p className="text-[14px] text-gray-500 font-light leading-6 mb-5 break-keep">{item.desc1}</p>
                       <p className="text-[14px] text-gray-500 font-light leading-6 mb-10 break-keep">{item.desc2}</p>
-                      <Link to="/business" className="inline-block self-start px-5 py-3 text-gray-950 text-xs font-bold tracking-widest uppercase rounded-full border border-gray-950 hover:bg-gray-950 hover:text-white transition-all">
+                      <Link to="/business" className="inline-block self-start px-4 py-2.5 text-gray-950 text-xs font-bold tracking-widest uppercase rounded-full border border-gray-950 hover:bg-gray-950 hover:text-white transition-all">
                         VIEW MORE
                       </Link>
                     </div>

@@ -73,18 +73,17 @@ const Notice = () => {
               <tr className="bg-gray-50 text-sm font-bold text-gray-700 border-b border-gray-200">
                 <th className="px-6 py-5 w-24 text-center">번호</th>
                 <th className="px-6 py-5">제목</th>
-                <th className="px-6 py-5 w-32 text-center">날짜</th>
                 <th className="px-6 py-5 w-24 text-center">조회수</th>
               </tr>
             </thead>
             <tbody>
               {loading ? (
                 <tr>
-                  <td colSpan="4" className="py-20 text-center text-gray-400">데이터를 불러오는 중입니다...</td>
+                  <td colSpan="3" className="py-20 text-center text-gray-400">데이터를 불러오는 중입니다...</td>
                 </tr>
               ) : notices.length === 0 ? (
                 <tr>
-                  <td colSpan="4" className="py-20 text-center text-gray-400">등록된 공지사항이 없습니다.</td>
+                  <td colSpan="3" className="py-20 text-center text-gray-400">등록된 공지사항이 없습니다.</td>
                 </tr>
               ) : (
                 notices.map((notice, index) => (
@@ -108,9 +107,6 @@ const Notice = () => {
                       <span className={`text-base tracking-tight ${notice.important ? 'font-bold text-gray-900' : 'text-gray-700'} group-hover:text-[#1a4a9c] transition-colors`}>
                         {notice.title}
                       </span>
-                    </td>
-                    <td className="px-6 py-5 text-center text-sm text-gray-400 font-medium">
-                      {notice.date}
                     </td>
                     <td className="px-6 py-5 text-center text-sm text-gray-400 font-medium">
                       {notice.views || 0}
