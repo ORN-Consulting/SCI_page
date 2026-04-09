@@ -1,14 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const PersonCard = ({ name = 'John Smith' }) => (
+const DeptCard = ({ label }) => (
   <div className="flex flex-col items-center gap-2">
     <div className="w-20 h-20 bg-gray-200 rounded-xl flex items-center justify-center">
-      <svg className="w-10 h-10 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+      <svg className="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0H5m14 0h2m-16 0H3m2-9h.01M12 12h.01M17 12h.01M7 8h.01M12 8h.01M17 8h.01M7 16h.01M12 16h.01M17 16h.01" />
       </svg>
     </div>
-    <span className="text-sm text-gray-700 font-medium">{name}</span>
+    <span className="text-sm text-gray-700 font-medium">{label}</span>
   </div>
 );
 
@@ -19,6 +19,7 @@ const About = () => {
   const greetingsRef = useRef(null);
   const introRef = useRef(null);
   const organizationRef = useRef(null);
+  const certRef = useRef(null);
 
   useEffect(() => {
     if (!hash) {
@@ -36,7 +37,9 @@ const About = () => {
       const currentOffset = window.innerWidth < 768 ? mobileOffset : desktopOffset;
       const scrollPos = window.scrollY + currentOffset + 10;
 
-      if (organizationRef.current && scrollPos >= organizationRef.current.offsetTop) {
+      if (certRef.current && scrollPos >= certRef.current.offsetTop) {
+        setActiveSection('cert');
+      } else if (organizationRef.current && scrollPos >= organizationRef.current.offsetTop) {
         setActiveSection('organization');
       } else if (introRef.current && scrollPos >= introRef.current.offsetTop) {
         setActiveSection('intro');
@@ -51,7 +54,7 @@ const About = () => {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    const refs = { greetings: greetingsRef, intro: introRef, organization: organizationRef };
+    const refs = { greetings: greetingsRef, intro: introRef, organization: organizationRef, cert: certRef };
     const targetRef = refs[sectionId];
 
     if (targetRef && targetRef.current) {
@@ -88,7 +91,8 @@ const About = () => {
           {[
             { id: 'greetings', label: '인사말' },
             { id: 'intro', label: '소개' },
-            { id: 'organization', label: '조직도' }
+            { id: 'organization', label: '조직도' },
+            { id: 'cert', label: '인증현황' }
           ].map((tab) => (
             <button
               key={tab.id}
@@ -114,8 +118,17 @@ const About = () => {
         <div className="max-w-2xl mx-auto w-full bg-gray-50 rounded-2xl p-10 md:p-14">
           <h2 className="text-2xl font-black text-gray-950 text-center mb-8 tracking-tight">인사말</h2>
           <div className="text-gray-600 leading-6 md:leading-relaxed text-sm md:text-base font-light break-keep space-y-4">
-            <p>국가과학기술 경쟁력 강화를 위한 이공계지원 특별법, 제2조 제1항 및 동법 시행령 제2조 제1항에 의한 이공계 인력이 조합원으로 참여하여 과학기술 관련 서비스 동력 활동을 하기위해 '협동조합기본법'에 의해 설립된 협동 조합으로, 과학기술인 협동조합지원센터의 확인을 받은 기업입니다. 과학기술인 협동조합은 중소기업기본법 이래 중소기업으로 중소기업과 같이 전자 세금계산서 발급 등, 공공입찰 등 모든 업무처리가 동일하게 가능합니다.</p>
-            <p>이런 상황에서 다수 노동자들이 한때 가졌던 직업은 저임금 노동자들의 나라로 아웃소싱되거나 로봇에 넘겨지고 있으며, 일을 빼앗긴 노동자들은 스스로를 다시 만들어내야 한다는 난제에 부딪혀 어쩔 줄 몰라 할 수밖에 없다. 이들은 마치 향수병에 걸린 사람들처럼 안정적인 동료집단과 과거의 경력을 아쉬워 한다.</p>
+            <p><strong className="font-bold text-gray-900">과학기술인협동조합 기술사업화지원단(기사단)</strong>은 관련 분야 박사학위 또는 공인 국가전문자격을 보유한 전문가들이 함께하는 과학기술인협동조합입니다. 창업지원 공공기관 경력자, 스타트업 및 중소기업 컨설팅 10년 이상의 경험과 노하우, 그리고 산·학·관에 걸친 폭넓은 네트워크를 바탕으로 고객의 과제에 최적의 솔루션을 제공합니다.</p>
+            <p>기술사업화지원단은 이러한 축적된 전문성과 현장 실무 경험, 실행력 있는 네트워크를 바탕으로 창업기업 및 중소기업의 실질적인 경영성과 도출을 지원하기 위해 다양한 분야의 컨설팅과 교육 서비스를 제공합니다.</p>
+            <p>첫째, 기술창업 및 기술사업화를 위한 비즈니스 모델 검토 및 수립, 사업타당성 분석, 정부 국책사업 연계를 위한 기술사업계획서 작성 지원, 타겟 시장 조사·분석과 매출 증진을 위한 마케팅 전략수립 서비스를 제공합니다.</p>
+            <p>둘째, 기업의 신규 아이템 발굴과 사업성 분석, 기술가치 평가, R&D 중장기 전략 수립, ESG 대응전략 등 기술사업화 전 과정에 걸친 전문 컨설팅을 지원합니다.</p>
+            <p>셋째, 기업가정신, 디자인씽킹, 해커톤, 리더십 등 실무 중심의 맞춤형 교육 프로그램을 설계하고 운영합니다. 대학, 공공기관, 창업지원기관, 창업보육센터(BI) 등의 기관 맞춤형 전문 프로그램 개발이 가능합니다.</p>
+            <p>넷째, 창업기업 및 중소기업 육성과 관련된 정부기관 및 지방자치단체의 정책연구용역, 산업조사 연구용역을 수행합니다.</p>
+            <p>다섯째, 정책자금 확보를 위한 정보 제공과 신청 지원, 벤처기업인증·이노비즈 인증 등 각종 인증 획득을 국가전문자격 경영지도사가 합법적으로 대행해 드립니다.</p>
+            <p>기술사업화지원단은 틀에 박힌 형식적인 컨설팅보다는 기업 현장에서 즉시 활용 가능한 구체적인 전략 수립과 이행계획을 제시하여, 컨설팅 이후 뚜렷한 가시적 성과를 도출하는 데 주력하고 있습니다.</p>
+            <p className="text-gray-900 font-bold mt-6">기술에 전략을, 창업에 성장을.</p>
+            <p>창업기업과 중소기업의 진정한 성장 파트너가 되기 위하여, 기술사업화지원단은 최선의 노력을 다하겠습니다.</p>
+            <p className="text-gray-900 font-medium text-right mt-4">과학기술인협동조합 기술사업화지원단 임직원 일동</p>
           </div>
         </div>
       </section>
@@ -134,9 +147,29 @@ const About = () => {
             className="w-full aspect-video object-cover rounded-lg mb-10"
           />
           <div className="text-gray-600 leading-6 md:leading-relaxed text-sm md:text-base font-light break-keep space-y-4">
-            <p>마침내 신이 말씀하실 때 그는 그 친구들이 가졌던 능력주의 가설을 부정함으로써, 욥성자를 관리하는 전인한 논리를 부정한다. 발생하는 모든 일이 사람의 행동을 대한 보상이나 벌이라는 생각이나 이어지는 것은 아니라고 전명한다.</p>
-            <p>신앙적으로 다음의 세기가 전제가 발생하기만 해야 인하다: '신은 정의롭다.' '신은 전능하다.' '악은 존재한다.' 이 난제를 푸는 방법 하나는 인간의 자유의지를 인정하는 것이다. 이로써 악의 존재에 대한 책임은 신에게서 우리에게로 돌거간다. 만약 신이 어떤 규범을 세웠을 뿐 아니라 개인에게 그것을 따르거나 따르지 않을 자유를 부여했다면, 우리는 옳은 것 대신 잘못된 것을 선택한 대 대한 책임을 져야 한다.</p>
-            <p>신앙적으로 다음의 세기가 전제가 발생하기만 해야 인하다: '신은 정의롭다.' '신은 전능하다.' '악은 존재한다.' 이 난제를 푸는 방법 하나는 인간의 자유의지를 인정하는 것이다. 이로써 악의 존재에 대한 책임은 신에게서 우리에게로 돌거간다. 만약 신이 어떤 규범을 세웠을 뿐 아니라 개인에게 그것을 따르거나 따르지 않을 자유를 부여했다면, 우리는 옳은</p>
+            <p><strong className="font-bold text-gray-900">기술사업화지원단(기사단)</strong>은 기술창업, 기술사업화, 기업가정신 교육, 스케일업, 투자유치 분야의 국내 최고 전문가들이 모여 설립한 과학기술인협동조합입니다.</p>
+            <p>조합원 전원이 관련 분야 박사학위 또는 공인 국가전문자격 보유자이며, 창업지원 공공기관 경력자, 스타트업 및 중소기업 컨설팅 10년 이상의 경험을 바탕으로 고객의 과제에 최적의 솔루션을 제공합니다.</p>
+            <p>기관과 기업의 수요에 맞춘 원스톱 맞춤형 교육과 컨설팅을 제공합니다.</p>
+          </div>
+
+          {/* 연혁 타임라인 */}
+          <div className="mt-14">
+            <h3 className="text-lg font-bold text-gray-950 mb-6 tracking-tight">연혁</h3>
+            <div className="space-y-4">
+              {[
+                { year: '2024.02', desc: '과학기술인협동조합 기술사업화지원단 설립 (용인시 223호)' },
+                { year: '2024.05', desc: '과학기술인협동조합 확인 (과기협동조합지원센터-66)' },
+                { year: '2024', desc: '여성기업 확인 (제 0118-2024-33450 호)' },
+                { year: '2024~', desc: '캠퍼스타운 BM분석(60개 기업), OO대학교 Startup-Booster Academy 운영' },
+                { year: '2025', desc: '공공연수 적정 비용 기준 연구 수행 (완료)' },
+                { year: '2025', desc: 'OO대학교 창업중심대학 창업기업 70개사 성과점검 및 컨설팅 수행' },
+              ].map((item, i) => (
+                <div key={i} className="flex gap-6 items-start">
+                  <span className="text-sm font-bold text-gray-900 w-20 shrink-0">{item.year}</span>
+                  <span className="text-sm text-gray-600 font-light">{item.desc}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -145,21 +178,72 @@ const About = () => {
       <section
         id="organization"
         ref={organizationRef}
-        className="pt-16 pb-41 px-10 md:px-20 bg-white scroll-mt-32 md:scroll-mt-26 flex items-center"
+        className="pt-16 pb-20 px-10 md:px-20 bg-white scroll-mt-32 md:scroll-mt-26 flex items-center"
       >
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl font-black text-gray-950 mb-14 tracking-tight">조직도</h2>
-          {/* 대표 1인 */}
+          {/* 이사장 */}
           <div className="flex justify-center mb-10">
-            <PersonCard />
+            <DeptCard label="조합이사장" />
           </div>
-          {/* 하위 5인 */}
+          {/* 지원단 5개 */}
           <div className="flex justify-center gap-6 flex-wrap">
-            <PersonCard />
-            <PersonCard />
-            <PersonCard />
-            <PersonCard />
-            <PersonCard />
+            <DeptCard label="컨설팅단" />
+            <DeptCard label="교육지원단" />
+            <DeptCard label="기업혁신지원단" />
+            <DeptCard label="R&D기획지원단" />
+            <DeptCard label="시장진출지원단" />
+          </div>
+        </div>
+      </section>
+
+      {/* 인증 현황 */}
+      <section
+        id="cert"
+        ref={certRef}
+        className="pt-16 pb-24 px-10 md:px-20 bg-gray-50 scroll-mt-32 md:scroll-mt-26"
+      >
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-2xl font-black text-gray-950 mb-4 tracking-tight">인증 현황</h2>
+          <p className="text-gray-400 text-sm font-light mb-12">기술사업화지원단이 보유한 공인 인증 현황입니다.</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: '과학기술인 협동조합',
+                subtitle: '등록확인',
+                detail: '과기협동조합지원센터-66',
+                year: '2024',
+                image: 'images/certs/확인서_과학기술인협동조합.png',
+              },
+              {
+                title: '여성기업 확인서',
+                subtitle: '여성기업확인',
+                detail: '제 0118-2024-33450 호',
+                year: '2024',
+                image: 'images/certs/확인서_여성기업.png',
+              },
+              {
+                title: '중소기업 확인서',
+                subtitle: '소기업 · 공공입찰용',
+                detail: '사업자등록번호 459-86-03431',
+                year: '2025',
+                image: 'images/certs/확인서_중소기업.png',
+              },
+            ].map((cert, i) => (
+              <div key={i} className="bg-white rounded-2xl p-6 border border-gray-200 text-center">
+                <div className="w-full aspect-[3/4] bg-gray-50 rounded-lg overflow-hidden mb-5">
+                  <img
+                    src={`${import.meta.env.BASE_URL}${cert.image}`}
+                    alt={cert.title}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <h3 className="text-base font-bold text-gray-950 mb-1">{cert.title}</h3>
+                <p className="text-sm text-gray-500 font-light mb-3">{cert.subtitle}</p>
+                <p className="text-xs text-gray-400 font-light">{cert.detail}</p>
+                <p className="text-xs text-gray-400 font-light mt-1">{cert.year}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

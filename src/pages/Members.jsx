@@ -1,106 +1,107 @@
 
+const BASE = import.meta.env.BASE_URL;
+
 const Members = () => {
   const allMembers = [
     {
       id: 1,
       name: "이자현",
-      role: "이사장",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&h=600&fit=crop&crop=face",
+      role: "조합 이사장",
+      image: "images/members/이자현.jpg",
       career: [
-        "가천대학교 대학원 회계세무학과 박사 (수료)",
-        "인하대학교 대학원 기계공학 석사",
-        "중소벤처기업부 비즈니스지원단 전문클리닉 위원",
-        "(주)오픈손경영컨설팅 대표 컨설턴트",
+        "경영학 박사",
+        "한국벤처창업학회 이사",
+        "중부대학교 겸임교수",
+        "창업지도사",
       ],
       specialty: [
-        "스타트업 재무분석 및 자금조달 실무",
-        "중소기업 사업전환 컨설팅",
-        "법인 학생 전략 컨설팅 / 중소기업 ESG 컨설팅",
+        "디자인씽킹",
+        "해커톤",
+        "예비창업 컨설팅",
       ],
     },
     {
       id: 2,
       name: "백종일",
       role: "컨설팅지원 단장",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&h=600&fit=crop&crop=face",
+      image: "images/members/백종일.jpg",
       career: [
-        "가천대학교 대학원 회계세무학과 박사 (수료)",
-        "인하대학교 대학원 기계공학 석사",
-        "중소벤처기업부 비즈니스지원단 전문클리닉 위원",
-        "(주)오픈손경영컨설팅 대표 컨설턴트",
+        "경영컨설팅학 박사",
+        "아주대 창업벤처 전담교수",
+        "경영지도사",
+        "기술거래사 / 기업기술가치평가사",
       ],
       specialty: [
-        "스타트업 재무분석 및 자금조달 실무",
-        "중소기업 사업전환 컨설팅",
-        "법인 학생 전략 컨설팅 / 중소기업 ESG 컨설팅",
+        "BM고도화 / AI활용",
+        "사업타당성 분석",
+        "ESG 대응전략",
       ],
     },
     {
       id: 3,
       name: "여재호",
       role: "교육지원 단장",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&h=600&fit=crop&crop=face",
+      image: "images/members/여재호.jpg",
       career: [
-        "가천대학교 대학원 회계세무학과 박사 (수료)",
-        "인하대학교 대학원 기계공학 석사",
-        "중소벤처기업부 비즈니스지원단 전문클리닉 위원",
-        "(주)오픈손경영컨설팅 대표 컨설턴트",
+        "기술경영 박사 수료",
+        "前 청년창업사관학교 본교 코칭팀장",
+        "창업지도사",
+        "인증코치(KPC)",
       ],
       specialty: [
-        "스타트업 재무분석 및 자금조달 실무",
-        "중소기업 사업전환 컨설팅",
-        "법인 학생 전략 컨설팅 / 중소기업 ESG 컨설팅",
+        "기업가정신",
+        "리더십",
+        "커뮤니케이션 교육",
       ],
     },
     {
       id: 4,
       name: "이동호",
       role: "기업혁신지원 단장",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&h=600&fit=crop&crop=face",
+      image: "images/members/이동호.jpg",
       career: [
-        "가천대학교 대학원 회계세무학과 박사 (수료)",
-        "인하대학교 대학원 기계공학 석사",
-        "중소벤처기업부 비즈니스지원단 전문클리닉 위원",
-        "(주)오픈손경영컨설팅 대표 컨설턴트",
+        "경영학 박사 수료",
+        "경영지도사(재무)",
+        "중소벤처기업부 비즈니스지원단",
+        "구조혁신 컨설턴트(중진공)",
       ],
       specialty: [
-        "스타트업 재무분석 및 자금조달 실무",
-        "중소기업 사업전환 컨설팅",
-        "법인 학생 전략 컨설팅 / 중소기업 ESG 컨설팅",
+        "재무관리",
+        "자금조달",
+        "기업회생",
       ],
     },
     {
       id: 5,
       name: "임충일",
       role: "R&D기획지원 단장",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&h=600&fit=crop&crop=face",
+      image: "images/members/임충일.jpg",
       career: [
-        "가천대학교 대학원 회계세무학과 박사 (수료)",
-        "인하대학교 대학원 기계공학 석사",
-        "중소벤처기업부 비즈니스지원단 전문클리닉 위원",
-        "(주)오픈손경영컨설팅 대표 컨설턴트",
+        "경영학 박사",
+        "경영지도사 / 기술신용평가사",
+        "한양여대 S/W융합과 겸임교수",
+        "정보처리산업기사",
       ],
       specialty: [
-        "스타트업 재무분석 및 자금조달 실무",
-        "중소기업 사업전환 컨설팅",
-        "법인 학생 전략 컨설팅 / 중소기업 ESG 컨설팅",
+        "디지털전환",
+        "R&D기획",
       ],
     },
     {
       id: 6,
       name: "최여원",
       role: "시장진출지원 단장",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&h=600&fit=crop&crop=face",
+      image: "images/members/최여원.jpg",
       career: [
-        "가천대학교 대학원 회계세무학과 박사 (수료)",
-        "인하대학교 대학원 기계공학 석사",
-        "중소벤처기업부 비즈니스지원단 전문클리닉 위원",
-        "(주)오픈손경영컨설팅 대표 컨설턴트",
+        "경영컨설팅학 석사",
+        "경영지도사(마케팅)",
+        "창업보육전문매니저",
+        "원가진단사 / 투자평가사 / 기업기술가치평가사",
       ],
       specialty: [
-        "스타트업 재무분석 및 자금조달 실무",
-        "중소기업 사업전환 컨설팅",
-        "법인 학생 전략 컨설팅 / 중소기업 ESG 컨설팅",
+        "마케팅 전략",
+        "시장진출",
+        "투자평가",
       ],
     },
   ];
@@ -124,7 +125,8 @@ const Members = () => {
       {/* 2. 섹션 타이틀 */}
       <section className="pt-24 pb-10 text-center px-10 md:px-20">
         <h2 className="text-3xl md:text-4xl font-black text-gray-950 mb-4 tracking-tight">함께하는 분</h2>
-        <p className="text-gray-400 text-sm font-light tracking-widest">기사단의 멤버들을 소개합니다</p>
+        <p className="text-gray-400 text-sm font-light tracking-widest">기술사업화의 각 단계별 최고의 전문가들이 한 팀으로.</p>
+        <p className="text-gray-400 text-xs font-light mt-2 max-w-xl mx-auto">기사단은 박사학위 또는 공인 국가전문자격을 보유한 전문가들로 구성되어 있습니다. 창업지원 공공기관 경력과 스타트업/중소기업 컨설팅 10년 이상의 경험을 바탕으로, 고객의 과제에 최적의 솔루션을 제공합니다.</p>
       </section>
 
       {/* 3. 멤버 카드 그리드 */}
@@ -137,7 +139,7 @@ const Members = () => {
               <div className="w-full aspect-3/4 bg-gray-300 overflow-hidden">
                 {member.image && (
                   <img
-                    src={member.image}
+                    src={`${BASE}${member.image}`}
                     alt={member.name}
                     className="w-full h-full object-cover grayscale"
                   />

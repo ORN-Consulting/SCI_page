@@ -36,10 +36,10 @@ const Header = () => {
     },
     {
       title: '조합활동',
-      path: '/gallery',
+      path: '/business',
       subItems: [
-        { name: '사업 분야 소개', path: '/gallery#business' },
-        { name: '컨설팅 & 강의 분야', path: '/gallery#lecture' }
+        { name: '사업 분야 소개', path: '/business' },
+        { name: '컨설팅 & 강의 분야', path: '/gallery' }
       ]
     },
     {

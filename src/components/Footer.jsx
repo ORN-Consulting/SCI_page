@@ -25,9 +25,10 @@ const Footer = () => {
 
           {/* 연락처 */}
           <div className="text-[14px] font-light text-white/30 leading-loose tracking-wide text-left">
-            <p>00000 서울특별시 강남구 논현로12길 19-9(개포동) 06312 한국</p>
-            <p>Tel. 010-0000-0000 &nbsp;&nbsp;&nbsp; Fax. 010-0000-0000</p>
-            <p>Email. example@gmail.com</p>
+            <p>경기도 용인시 기흥구 강남로 12, 805호 (구갈동, 스카이프라자)</p>
+            <p>Tel. 031-322-2357 &nbsp;&nbsp;&nbsp; Fax. 050-4031-9057</p>
+            <p>Email. kisadan01@naver.com &nbsp;&nbsp;&nbsp; Web. www.kisdan.org</p>
+            <p className="text-white/15 text-[11px] mt-2">사업자등록번호 459-86-03431 &nbsp;|&nbsp; 대표자 이자현 &nbsp;|&nbsp; 과학기술인협동조합 기술사업화지원단</p>
           </div>
 
         </div>
